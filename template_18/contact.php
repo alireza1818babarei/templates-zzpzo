@@ -59,7 +59,7 @@ if (file_exists($bannerFile)) {
           <div class="zz-page-title">
             <h2 class="tm-color-primary">Contact</h2>
           </div>
-          <div class="zz-dynamic-content text-content">
+          <div class="zz-dynamic-content text-content  x">
             <?php
             $filePath = 'contact.txt';
             if (file_exists($filePath)) {

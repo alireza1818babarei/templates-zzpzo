@@ -903,7 +903,10 @@ body {
     margin-bottom: 28px;
   }
 }
-
+.x {
+  height: 400px;
+  overflow-y: auto;
+}
 /* ZZpzo contact hardening: keep contact title and reCAPTCHA note above the image */
 #form-section.zz-form-section {
   isolation: isolate;
