@@ -43,7 +43,7 @@
   </noscript>
 </head>
 
-<body class="is-preload">
+<body class="is-preload zz-static-page">
 
   <!-- Wrapper -->
   <div id="wrapper">
@@ -117,13 +117,6 @@
 
   <!-- BG -->
   <div id="bg"></div>
-
-  <!-- Open this page's native Dimension article -->
-  <script>
-    if (!window.location.hash) {
-      window.location.hash = '#about';
-    }
-  </script>
 
   <!-- Scripts -->
   <script src="assets/js/jquery.min.js?id=<?= $version ?>"></script>
