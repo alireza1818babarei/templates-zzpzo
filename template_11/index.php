@@ -42,7 +42,7 @@
   </noscript>
 </head>
 
-<body class="is-preload">
+<body class="is-preload zz-home-page">
 
   <div id="wrapper">
 
@@ -111,14 +111,21 @@
         <a href="terms.php">Algemene voorwaarden</a> &nbsp;|&nbsp;
         <a href="complain.php">Klachtenportaal</a> &nbsp;|&nbsp;
         <a href="privacy.php">Privacybeleid</a>
-        <br />
+        <br /><br />
         Auteursrecht &copy; <?= date('Y') ?> ZZpzo
       </p>
     </footer>
 
   </div>
 
-  <div id="bg"></div>
+  <div id="bg">
+    <img
+      class="zz-home-background"
+      src="<?= htmlspecialchars($pageImage, ENT_QUOTES, 'UTF-8') ?>"
+      alt=""
+      aria-hidden="true"
+    />
+  </div>
 
   <script src="assets/js/jquery.min.js?id=<?php echo filemtime('assets/js/jquery.min.js'); ?>"></script>
   <script src="assets/js/browser.min.js?id=<?php echo filemtime('assets/js/browser.min.js'); ?>"></script>

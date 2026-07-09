@@ -50,7 +50,7 @@ p:last-child { margin-bottom: 0; }
     padding: 30px;
 }
 
-.tm-contact-box-pad { padding: 60px 55px; }
+.tm-contact-box-pad { padding: 30px 20px; margin-bottom: 40px;}
 .tm-border-white { border: 1px solid white; }
 .media { align-items: center; }
 
@@ -107,7 +107,7 @@ p:last-child { margin-bottom: 0; }
     -webkit-box-pack: center;
     -ms-flex-pack: center;
             justify-content: center;
-    padding: 60px 50px;
+    padding: 0 50px 60px;
     cursor: default;
     z-index: 100;
     background: rgba(0,0,0,0.5);
@@ -328,7 +328,7 @@ footer a { color: white; }
   }
 }
 
-@media (max-width: 991px) {    
+@media (max-width: 1199px) {    
 
     /*  Nav toggle
         https://www.youtube.com/watch?v=uyT3NSHhke8
@@ -682,13 +682,13 @@ body::before {
 }
 .tm-copyright-text p {
     margin: 0;
-    font-size: 1rem;
+    font-size: .7rem;
     line-height: 1.5;
 }
 .zz-footer-links a {
     color: white;
     text-transform: uppercase;
-    font-size: 0.95rem;
+    font-size: 0.75rem;
     letter-spacing: 1px;
 }
 .zz-footer-links a:hover {
@@ -726,7 +726,9 @@ body::before {
 }
 /* Keeps long dynamic Startpagina text inside its content area. */
 .zz-home-text-wrap,
+.zz-dynamic-content,
 .zz-home-text-wrap * {
   overflow-wrap: anywhere;
   word-break: break-word;
+  height: 500px;
 }

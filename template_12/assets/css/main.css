@@ -2251,6 +2251,19 @@ input, select, textarea {
 		background-repeat: repeat, no-repeat;
 	}
 
+/* Internal page heroes */
+
+	#about-hero,
+	#services-hero,
+	#contact-hero,
+	#complain-hero,
+	#privacy-hero,
+	#terms-hero {
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+
 /* One */
 
 	#one {

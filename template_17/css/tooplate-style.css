@@ -523,6 +523,7 @@ body { overflow-x: hidden; }
     overflow-wrap: anywhere;
     word-break: break-word;
     overflow-x: hidden;
+    height: 500px;
 }
 .zz-dynamic-content p,
 .content-body p,

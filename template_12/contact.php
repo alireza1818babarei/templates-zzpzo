@@ -4,6 +4,7 @@
   Adapted as a standalone PHP page for ZZPZO.
 -->
 <html lang="nl">
+
 <head>
   <meta charset="utf-8" />
 
@@ -25,88 +26,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
   <link rel="stylesheet" href="assets/css/main.css?id=<?php echo filemtime('assets/css/main.css'); ?>" />
-  <noscript><link rel="stylesheet" href="assets/css/noscript.css?id=<?php echo filemtime('assets/css/noscript.css'); ?>" /></noscript>
+  <noscript>
+    <link rel="stylesheet" href="assets/css/noscript.css?id=<?php echo filemtime('assets/css/noscript.css'); ?>" />
+  </noscript>
 
-    <style>
-      #header #brandLogo {
-        display: inline-flex;
-        align-items: center;
-        height: 70%;
-        justify-content: center;
+  <style>
+    #header #brandLogo {
+      display: inline-flex;
+      align-items: center;
+      height: 70%;
+      justify-content: center;
+    }
+
+    #header #brandLogo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    #header nav ul {
+      white-space: nowrap;
+    }
+
+    #header nav ul li.active>a {
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 0.25rem;
+    }
+
+    .zzpzo-page-hero {
+      min-height: 55vh !important;
+    }
+
+    .zzpzo-rich-text {
+      line-height: 1.8;
+      overflow-wrap: anywhere;
+      text-align: left;
+    }
+
+    .zzpzo-legal-links a {
+      text-decoration: none;
+    }
+
+    @media screen and (max-width: 980px) {
+      #header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
       }
 
-      #header #brandLogo img {
-        display: block;
-        width: 100%;
-        height: 100%;
+      #header nav {
+        overflow-x: auto;
+        max-width: 100%;
       }
 
-      #header nav ul {
-        white-space: nowrap;
+      #header nav ul li {
+        margin-left: 0.7rem;
       }
-
-      #header nav ul li.active > a {
-        font-weight: 700;
-        text-decoration: underline;
-        text-underline-offset: 0.25rem;
-      }
-
-      .zzpzo-page-hero {
-        min-height: 55vh !important;
-      }
-
-      .zzpzo-rich-text {
-        line-height: 1.8;
-        overflow-wrap: anywhere;
-        text-align: left;
-      }
-
-      .zzpzo-legal-links a {
-        text-decoration: none;
-      }
-
-      @media screen and (max-width: 980px) {
-        #header {
-          flex-wrap: wrap;
-          gap: 0.5rem;
-        }
-
-        #header nav {
-          overflow-x: auto;
-          max-width: 100%;
-        }
-
-        #header nav ul li {
-          margin-left: 0.7rem;
-        }
-      }
-    </style>
+    }
+  </style>
 
 </head>
 
 <body class="is-preload zzpzo-responsive-page">
- <header id="header">
+  <header id="header">
     <h1 style="display: flex; align-items: center;">
       <a href="index.php" id="brandLogo" aria-label="Naar de startpagina">
-        <img
-        style="height: 100%;"
-          src="logo.png?id=<?php echo filemtime('logo.png'); ?>"
-          alt="<?= htmlspecialchars($siteTitle, ENT_QUOTES, 'UTF-8') ?> Logo"
-          onerror="this.remove();"
-        />
+        <img style="height: 100%;" src="logo.png?id=<?php echo filemtime('logo.png'); ?>"
+          alt="<?= htmlspecialchars($siteTitle, ENT_QUOTES, 'UTF-8') ?> Logo" onerror="this.remove();" />
       </a>
     </h1>
 
-    <button class="zzpzo-menu-toggle" type="button" aria-label="Menu openen" aria-expanded="false" aria-controls="primaryNavigation">
+    <button class="zzpzo-menu-toggle" type="button" aria-label="Menu openen" aria-expanded="false"
+      aria-controls="primaryNavigation">
       <span></span><span></span><span></span>
     </button>
 
     <nav id="primaryNavigation" aria-label="Primaire navigatie">
       <ul>
-          <li><a href="index.php">Startpagina</a></li>
-          <li><a href="about.php">Over ons</a></li>
-          <li><a href="service.php">Diensten</a></li>
-          <li class="active"><a href="contact.php">Contact</a></li>
+        <li><a href="index.php">Startpagina</a></li>
+        <li><a href="about.php">Over ons</a></li>
+        <li><a href="service.php">Diensten</a></li>
+        <li class="active"><a href="contact.php">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -124,11 +124,8 @@
   }
   ?>
 
-  <section
-    id="contact-hero"
-    class="main style1 dark fullscreen"
-    style="background-image: linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)), url('<?= htmlspecialchars($bannerUrl, ENT_QUOTES, 'UTF-8') ?>');"
-  >
+  <section id="contact-hero" class="main style1 dark fullscreen"
+    style="background-image: linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)), url('<?= htmlspecialchars($bannerUrl, ENT_QUOTES, 'UTF-8') ?>');">
     <div class="content">
       <header>
         <h2>Neem contact op</h2>
@@ -162,51 +159,25 @@
         <form method="post" action="#">
           <div class="fields">
             <div class="field half">
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Naam"
-                autocomplete="name"
-                required
-              />
+              <input type="text" name="name" id="name" placeholder="Naam" autocomplete="name" required />
             </div>
 
             <div class="field half">
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="E-mail"
-                autocomplete="email"
-                required
-              />
+              <input type="email" name="email" id="email" placeholder="E-mail" autocomplete="email" required />
             </div>
 
             <div class="field">
-              <input
-                type="text"
-                name="phone"
-                id="phone"
-                placeholder="Telefoon"
-                inputmode="tel"
-                autocomplete="tel"
-              />
+              <input type="text" name="phone" id="phone" placeholder="Telefoon" inputmode="tel" autocomplete="tel" />
             </div>
 
             <div class="field">
-              <textarea
-                name="message"
-                id="message"
-                placeholder="Bericht"
-                rows="6"
-                required
-              ></textarea>
+              <textarea name="message" id="message" placeholder="Bericht" rows="6" required></textarea>
             </div>
           </div>
 
           <p>
-            Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.
+            Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a
+              href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.
           </p>
 
           <ul class="actions special">
@@ -228,14 +199,16 @@
     </ul>
   </footer>
 
-    <script src="assets/js/jquery.min.js?id=<?php echo filemtime('assets/js/jquery.min.js'); ?>"></script>
-    <script src="assets/js/jquery.poptrox.min.js?id=<?php echo filemtime('assets/js/jquery.poptrox.min.js'); ?>"></script>
-    <script src="assets/js/jquery.scrolly.min.js?id=<?php echo filemtime('assets/js/jquery.scrolly.min.js'); ?>"></script>
-    <script src="assets/js/jquery.scrollex.min.js?id=<?php echo filemtime('assets/js/jquery.scrollex.min.js'); ?>"></script>
-    <script src="assets/js/browser.min.js?id=<?php echo filemtime('assets/js/browser.min.js'); ?>"></script>
-    <script src="assets/js/breakpoints.min.js?id=<?php echo filemtime('assets/js/breakpoints.min.js'); ?>"></script>
-    <script src="assets/js/util.js?id=<?php echo filemtime('assets/js/util.js'); ?>"></script>
-    <script src="assets/js/main.js?id=<?php echo filemtime('assets/js/main.js'); ?>"></script>
+  <script src="assets/js/jquery.min.js?id=<?php echo filemtime('assets/js/jquery.min.js'); ?>"></script>
+  <script src="assets/js/jquery.poptrox.min.js?id=<?php echo filemtime('assets/js/jquery.poptrox.min.js'); ?>"></script>
+  <script src="assets/js/jquery.scrolly.min.js?id=<?php echo filemtime('assets/js/jquery.scrolly.min.js'); ?>"></script>
+  <script
+    src="assets/js/jquery.scrollex.min.js?id=<?php echo filemtime('assets/js/jquery.scrollex.min.js'); ?>"></script>
+  <script src="assets/js/browser.min.js?id=<?php echo filemtime('assets/js/browser.min.js'); ?>"></script>
+  <script src="assets/js/breakpoints.min.js?id=<?php echo filemtime('assets/js/breakpoints.min.js'); ?>"></script>
+  <script src="assets/js/util.js?id=<?php echo filemtime('assets/js/util.js'); ?>"></script>
+  <script src="assets/js/main.js?id=<?php echo filemtime('assets/js/main.js'); ?>"></script>
 
 </body>
+
 </html>

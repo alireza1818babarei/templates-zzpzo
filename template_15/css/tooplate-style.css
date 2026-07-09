@@ -740,7 +740,104 @@ form textarea {
   font-size: 13px;
   font-weight: 700;
 }
+/* Template 15 - footer layout fix */
+footer,
+.site-footer,
+.footer {
+    width: 100%;
+    overflow: hidden;
+}
 
+footer .container,
+.site-footer .container,
+.footer .container {
+    max-width: 100%;
+}
+
+footer .footer-inner,
+.site-footer .footer-inner,
+.footer .footer-inner,
+footer .row,
+.site-footer .row,
+.footer .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: nowrap;
+}
+
+footer .footer-links,
+.site-footer .footer-links,
+.footer .footer-links,
+footer nav,
+.site-footer nav,
+.footer nav,
+footer ul,
+.site-footer ul,
+.footer ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 28px;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    min-width: max-content;
+}
+
+footer a,
+.site-footer a,
+.footer a {
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 1.4;
+}
+
+footer p,
+.site-footer p,
+.footer p {
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    footer .footer-inner,
+    .site-footer .footer-inner,
+    .footer .footer-inner,
+    footer .row,
+    .site-footer .row,
+    .footer .row {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 18px;
+    }
+
+    footer .footer-links,
+    .site-footer .footer-links,
+    .footer .footer-links,
+    footer nav,
+    .site-footer nav,
+    .footer nav,
+    footer ul,
+    .site-footer ul,
+    .footer ul {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 14px 22px;
+        min-width: 0;
+    }
+
+    footer p,
+    .site-footer p,
+    .footer p {
+        white-space: normal;
+    }
+}
 .zz-footer-links a:hover {
   color: #fff;
 }
@@ -798,9 +895,6 @@ form textarea {
     text-align: center;
   }
 
-  .zz-footer-links {
-    margin-top: 16px;
-  }
 
   .zz-footer-links a {
     display: inline-block;
