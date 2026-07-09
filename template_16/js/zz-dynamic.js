@@ -13,6 +13,14 @@
         '}',
         '@media (max-width: 991px) {',
         '  #tmSideBar .inner { position: static; width: 100%; }',
+        '  .tm-main, .tm-main-row, .tm-content, .tm-section, .zz-content-box, .zz-form-box { height: auto !important; max-height: none !important; }',
+        '  .tm-content { align-items: flex-start !important; min-height: auto !important; }',
+        '  .zz-dynamic-content, .zz-dynamic-content *, .zz-home-text-wrap, .zz-home-text-wrap * { height: auto !important; min-height: 0 !important; max-height: none !important; overflow: visible !important; }',
+        '  .tm-bg-transparent-black { height: auto !important; max-height: none !important; overflow: visible !important; }',
+        '  .tm-contact-col { height: auto !important; max-height: none !important; }',
+        '}',
+        '@media (max-width: 767px) {',
+        '  .zz-dynamic-content, .zz-dynamic-content *, .zz-home-text-wrap, .zz-home-text-wrap * { height: auto !important; max-height: none !important; overflow: visible !important; }',
         '}'
     ].join('\n');
 
