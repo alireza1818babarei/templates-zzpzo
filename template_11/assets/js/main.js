@@ -290,12 +290,36 @@
 		// Template pages such as about.php should show their only article without adding #hash to the URL.
 			if ($body.hasClass('zz-static-page')) {
 
+				var $staticArticle = $main_articles.first();
+
 				$body.addClass('is-article-visible');
 				$header.hide();
 				$footer.hide();
 				$main.show();
 				$main_articles.hide().removeClass('active');
-				$main_articles.first().show().addClass('active');
+				$staticArticle.show().addClass('active');
+
+				if ($staticArticle.find('.zz-page-close').length == 0) {
+					$('<a class="zz-page-close" href="index.php" aria-label="Terug naar startpagina">&times;</a>')
+						.css({
+							'position': 'absolute',
+							'top': '0.75rem',
+							'right': '0.75rem',
+							'width': '2.5rem',
+							'height': '2.5rem',
+							'display': 'flex',
+							'align-items': 'center',
+							'justify-content': 'center',
+							'border-bottom': '0',
+							'border-radius': '100%',
+							'color': '#ffffff',
+							'font-size': '2rem',
+							'line-height': '1',
+							'text-decoration': 'none',
+							'z-index': '5'
+						})
+						.appendTo($staticArticle);
+				}
 
 				$window.on('load', function() {
 					$window
