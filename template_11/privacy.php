@@ -39,7 +39,7 @@
 		<link rel="stylesheet" href="assets/css/main.css?id=<?= $version ?>" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css?id=<?= $version ?>" /></noscript>
 	</head>
-	<body class="is-preload">
+	<body class="is-preload zz-static-page">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -113,13 +113,6 @@
 
 		<!-- BG -->
 			<div id="bg"></div>
-
-		<!-- Open this page's native Dimension article -->
-			<script>
-				if (!window.location.hash) {
-					window.location.hash = '#privacy';
-				}
-			</script>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js?id=<?= $version ?>"></script>
