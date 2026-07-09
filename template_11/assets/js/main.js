@@ -286,6 +286,27 @@
 
 			};
 
+		// Static multi-page mode.
+		// Template pages such as about.php should show their only article without adding #hash to the URL.
+			if ($body.hasClass('zz-static-page')) {
+
+				$body.addClass('is-article-visible');
+				$header.hide();
+				$footer.hide();
+				$main.show();
+				$main_articles.hide().removeClass('active');
+				$main_articles.first().show().addClass('active');
+
+				$window.on('load', function() {
+					$window
+						.scrollTop(0)
+						.triggerHandler('resize.flexbox-fix');
+				});
+
+				return;
+
+			}
+
 		// Articles.
 			$main_articles.each(function() {
 
