@@ -881,6 +881,10 @@ body {
   word-break: break-word;
 }
 
+.zz-dynamic-content {
+  height: 630px;
+}
+
 .zz-form-note a {
   color: #cc0064;
   font-weight: 700;
@@ -1151,6 +1155,7 @@ body {
     right: 10px;
     left: 10px;
   }
+
 
   .zz-menu-card {
     min-height: 68px;

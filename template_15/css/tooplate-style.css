@@ -627,10 +627,9 @@ body {
 
 .zz-dynamic-section,
 .zz-form-section {
-  min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 112px 0 96px;
+  padding: 112px 0 0;
   background: #f4f4f4;
 }
 
