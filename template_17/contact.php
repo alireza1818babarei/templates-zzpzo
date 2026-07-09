@@ -40,26 +40,7 @@ if (file_exists($filePath)) {
         </div>
       </nav>
 
-      <?php
-$defaultBanner = "img/slopa-pic-03.jpg";
-$bannerFile = "contactimage.txt";
-
-if (file_exists($bannerFile)) {
-    $bannerUrl = trim(file_get_contents($bannerFile));
-    if ($bannerUrl === "") {
-        $bannerUrl = $defaultBanner;
-    }
-} else {
-    $bannerUrl = $defaultBanner;
-}
-?>
-      <section class="zz-hero-section" style="background-image: url('img/slopa-bottom-line.png'), url('<?php echo htmlspecialchars($bannerUrl); ?>');">
-        <div class="col-xs-12 tm-bg-black-alpha tm-text-white text-center tm-site-header-box zz-hero-box">
-          <h1 class="mb-0">Contact</h1>
-        </div>
-      </section>
-
-      <section class="zz-form-section">
+      <section class="zz-complain-section">
         <div class="container">
           <div class="zz-form-panel">
             <div class="row">
