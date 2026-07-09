@@ -21,17 +21,6 @@
 				$siteTitle = trim($titleContent);
 			}
 		}
-
-		$imageFile = 'privacyimage.txt';
-		$pageImage = 'images/pic03.jpg';
-
-		if (file_exists($imageFile)) {
-			$savedImage = file_get_contents($imageFile);
-
-			if ($savedImage !== false && trim($savedImage) !== '') {
-				$pageImage = trim($savedImage);
-			}
-		}
 		?>
 
 		<title><?= htmlspecialchars($siteTitle, ENT_QUOTES, 'UTF-8') ?> - Privacybeleid</title>
@@ -74,9 +63,6 @@
 
 						<article id="privacy">
 							<h2 class="major">Privacybeleid</h2>
-							<span class="image main">
-								<img src="<?= htmlspecialchars($pageImage, ENT_QUOTES, 'UTF-8') ?>" alt="Privacybeleid" />
-							</span>
 							<p>
 <?php
 						$contentFile = 'privacy.txt';
