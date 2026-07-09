@@ -69,6 +69,7 @@
   }
   
   .zz-contact-layout .tm-contact-form {
+    order: 1;
     width: 100%;
     max-width: none;
     margin: 0;
@@ -77,6 +78,7 @@
   }
   
   .zz-contact-info {
+    order: 2;
     width: 100%;
     height: 630px;
     padding: clamp(45px, 4vw, 70px);
@@ -208,11 +210,11 @@
   }
   
   .zz-contact-layout .zz-contact-info {
-    order: 1;
+    order: 1 !important;
   }
   
   .zz-contact-layout .tm-contact-form {
-    order: 2;
+    order: 2 !important;
     width: 100%;
     max-width: none;
     margin: 0;

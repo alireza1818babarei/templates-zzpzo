@@ -56,6 +56,17 @@ if (file_exists($bannerFile)) {
     </div>
     <main class="zz-main-content">
       <section class="zz-contact-layout">
+        <div class="tm-bg-dark zz-contact-info zz-dynamic-content text-content">
+          <h2>Contact</h2>
+          <?php
+          $filePath = 'contact.txt';
+          if (file_exists($filePath)) {
+            echo nl2br(htmlspecialchars(file_get_contents($filePath)));
+          } else {
+            echo '-';
+          }
+          ?>
+        </div>
         <form action="#" class="tm-contact-form" method="post">
           <div class="form-group mb-4">
             <input type="text" name="name" class="form-control" placeholder="Naam" />
@@ -74,17 +85,6 @@ if (file_exists($bannerFile)) {
           </div>
           <div class="zz-contact-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
         </form>
-        <div class="tm-bg-dark zz-contact-info zz-dynamic-content text-content">
-          <h2>Contact</h2>
-          <?php
-          $filePath = 'contact.txt';
-          if (file_exists($filePath)) {
-            echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-          } else {
-            echo '-';
-          }
-          ?>
-        </div>
       </section>
     </main>
     <div class="zz-bottom-container">
