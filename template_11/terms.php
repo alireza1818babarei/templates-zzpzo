@@ -21,17 +21,6 @@
 				$siteTitle = trim($titleContent);
 			}
 		}
-
-		$imageFile = 'termsimage.txt';
-		$pageImage = 'images/pic01.jpg';
-
-		if (file_exists($imageFile)) {
-			$savedImage = file_get_contents($imageFile);
-
-			if ($savedImage !== false && trim($savedImage) !== '') {
-				$pageImage = trim($savedImage);
-			}
-		}
 		?>
 
 		<title><?= htmlspecialchars($siteTitle, ENT_QUOTES, 'UTF-8') ?> - Algemene voorwaarden</title>
@@ -73,9 +62,6 @@
 
 						<article id="terms">
 							<h2 class="major">Algemene voorwaarden</h2>
-							<span class="image main">
-								<img src="<?= htmlspecialchars($pageImage, ENT_QUOTES, 'UTF-8') ?>" alt="Algemene voorwaarden" />
-							</span>
 							<p>
 <?php
 						$contentFile = 'terms.txt';
