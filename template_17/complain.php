@@ -47,17 +47,7 @@ if (file_exists($filePath)) {
               <h2 class="col-sm-12 text-left mb-5">Klachtenportaal</h2>
             </div>
             <div class="row mb-4">
-              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-sm-4 mb-md-0 mb-4">
-                <form action="#" method="POST">
-                  <div class="form-group"><input type="text" name="name" class="form-control" placeholder="Naam"></div>
-                  <div class="form-group"><input type="text" name="phone" class="form-control" placeholder="Telefoon"></div>
-                  <div class="form-group"><input type="email" name="email" class="form-control" placeholder="E-mail"></div>
-                  <div class="form-group tm-mb-20"><textarea rows="5" name="message" class="form-control" placeholder="Bericht"></textarea></div>
-                  <div class="form-group"><button type="submit" class="btn btn-primary tm-btn-send">Verzenden</button></div>
-                </form>
-                <div class="zz-form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
-              </div>
-              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 zz-contact-text">
+                            <div class="col-xs-12 col-sm-12 col-md-6 pb-5 col-lg-6 col-xl-6 zz-contact-text">
                 <div class="zz-dynamic-content text-content">
                   <?php
                   $filePath = 'complain.txt';
@@ -68,6 +58,16 @@ if (file_exists($filePath)) {
                   }
                   ?>
                 </div>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-sm-4 mb-md-0 mb-4">
+                <form action="#" method="POST">
+                  <div class="form-group"><input type="text" name="name" class="form-control" placeholder="Naam"></div>
+                  <div class="form-group"><input type="text" name="phone" class="form-control" placeholder="Telefoon"></div>
+                  <div class="form-group"><input type="email" name="email" class="form-control" placeholder="E-mail"></div>
+                  <div class="form-group tm-mb-20"><textarea rows="5" name="message" class="form-control" placeholder="Bericht"></textarea></div>
+                  <div class="form-group"><button type="submit" class="btn btn-primary tm-btn-send">Verzenden</button></div>
+                </form>
+                <div class="zz-form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
               </div>
             </div>
           </div>

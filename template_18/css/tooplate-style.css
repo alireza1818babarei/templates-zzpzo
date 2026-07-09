@@ -856,8 +856,9 @@ body {
 }
 
 .zz-contact-intro .zz-dynamic-content {
-  min-height: 34px;
+  /* height: 600px; */
   margin-bottom: 0;
+
 }
 
 .zz-contact-form {
@@ -1063,7 +1064,7 @@ body {
 .zz-page-section,
 .zz-form-section,
 .zz-plain-section {
-  padding-top: 146px;
+  padding-top: 250px;
 }
 
 @media (min-width: 993px) {

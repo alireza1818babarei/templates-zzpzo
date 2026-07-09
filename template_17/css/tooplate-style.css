@@ -524,6 +524,7 @@ body { overflow-x: hidden; }
     word-break: break-word;
     overflow-x: hidden;
     height: 500px;
+    padding-right: 5px;
 }
 .zz-dynamic-content p,
 .content-body p,
@@ -538,8 +539,6 @@ body { overflow-x: hidden; }
 }
 
 .zz-form-section {
-    background: url(../img/slopa-top-left.png) right top no-repeat,
-                url(../img/slopa-pic-03.jpg) center no-repeat;
     background-size: auto, cover;
     display: flex;
     align-items: center;
