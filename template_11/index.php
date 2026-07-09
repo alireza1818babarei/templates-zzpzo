@@ -42,6 +42,28 @@
   <noscript>
     <link rel="stylesheet" href="assets/css/noscript.css?id=<?= $version ?>" />
   </noscript>
+  <style>
+    .zz-home-page #footer .copyright .zz-legal-link {
+      display: inline-block;
+      margin: 0.25rem 0.35rem;
+      font-size: clamp(0.95rem, 1.7vw, 1.15rem);
+      font-weight: 600;
+      letter-spacing: 0.12rem;
+      text-transform: uppercase;
+    }
+
+    @media screen and (max-width: 736px) {
+      .zz-home-page #footer .copyright .zz-legal-link {
+        display: block;
+        margin: 0.45rem 0;
+        font-size: 1rem;
+      }
+
+      .zz-home-page #footer .copyright .zz-link-separator {
+        display: none;
+      }
+    }
+  </style>
 </head>
 
 <body class="is-preload zz-home-page">
@@ -110,9 +132,9 @@
 
     <footer id="footer">
       <p class="copyright">
-        <a href="terms.php">Algemene voorwaarden</a> &nbsp;|&nbsp;
-        <a href="complain.php">Klachtenportaal</a> &nbsp;|&nbsp;
-        <a href="privacy.php">Privacybeleid</a>
+        <a href="terms.php" class="zz-legal-link">Algemene voorwaarden</a><span class="zz-link-separator"> &nbsp;|&nbsp; </span>
+        <a href="complain.php" class="zz-legal-link">Klachtenportaal</a><span class="zz-link-separator"> &nbsp;|&nbsp; </span>
+        <a href="privacy.php" class="zz-legal-link">Privacybeleid</a>
         <br /><br />
         Auteursrecht &copy; <?= date('Y') ?> ZZpzo
       </p>
