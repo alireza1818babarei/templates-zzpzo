@@ -97,7 +97,85 @@
   }
 }
 
+<<<<<<< HEAD
 @media (max-width:991px) {
+=======
+@media (max-width: 991px) {
+  .tm-top-container {
+    width: min(100% - 32px, 900px);
+    margin: 0 auto 34px;
+    display: flex !important;
+    flex-direction: column-reverse !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: 10px;
+  }
+
+  .tm-top-container > div {
+    width: 100%;
+    margin: 0 !important;
+    padding: 18px 20px !important;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tm-top-container #brandLogo {
+    width: 100%;
+    min-height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tm-top-container #brandLogo img {
+    width: auto;
+    max-width: min(320px, 82%);
+    max-height: 90px;
+    object-fit: contain;
+  }
+
+  .tm-nav {
+    width: 100%;
+    margin: 0 !important;
+    align-self: stretch !important;
+  }
+
+  .tm-navbar-menu {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 16px 20px !important;
+    display: block;
+    color: #fff !important;
+    background: rgba(0,0,0,0.72) !important;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .tm-nav-links {
+    display: none;
+    width: 100%;
+    margin: 8px 0 0;
+    padding: 0;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tm-nav-links.open {
+    display: flex;
+  }
+
+  .tm-nav-link:link,
+  .tm-nav-link:visited {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    color: #fff;
+    background: rgba(0,0,0,0.72);
+  }
+
+>>>>>>> c6b5a1a55a0c6cc2ea463d6c64af127e4b6205d8
   .zz-main-content {
     padding: 40px 24px 32px;
     justify-content: center;
@@ -155,7 +233,24 @@
   }
 }
 
+<<<<<<< HEAD
 @media (max-width:640px) {
+=======
+@media (max-width: 640px) {
+  .tm-top-container {
+    width: min(100% - 24px, 900px);
+    margin-bottom: 28px;
+  }
+
+  .tm-top-container #brandLogo {
+    min-height: 82px;
+  }
+
+  .tm-top-container #brandLogo img {
+    max-height: 78px;
+  }
+
+>>>>>>> c6b5a1a55a0c6cc2ea463d6c64af127e4b6205d8
   .zz-main-content {
     padding: 28px 16px 24px;
   }

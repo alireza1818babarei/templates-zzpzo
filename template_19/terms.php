@@ -25,7 +25,7 @@ if (file_exists($filePath)) {
     <div class="tm-top-container">
       <nav id="tmNav" class="tm-nav">
         <a class="tm-navbar-menu" href="#">Menu</a>
-        <ul class="tm-nav-links open">
+        <ul class="tm-nav-links">
           <li class="tm-nav-item "><a href="index.php" class="tm-nav-link">Startpagina</a></li>
 <li class="tm-nav-item "><a href="about.php" class="tm-nav-link">Over ons</a></li>
 <li class="tm-nav-item "><a href="service.php" class="tm-nav-link">Diensten</a></li>
