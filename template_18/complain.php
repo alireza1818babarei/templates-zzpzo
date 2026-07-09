@@ -35,44 +35,41 @@ if (file_exists($filePath)) {
 </nav>
 
 
-<section id="form-section" class="tm-section zz-form-section">
+<section class="tm-section zz-complain-layout-section">
   <div class="container">
-    <div class="row">
-      <div class="col-xl-4 col-lg-4 tm-flex-center-v tm-section-left">
-        <form action="#" class="tm-contact-form zz-contact-form" method="POST">
-          <div class="form-group mb-4">
-            <input type="text" name="name" class="form-control" placeholder="Naam">
-          </div>
-          <div class="form-group mb-4">
-            <input type="text" name="phone" class="form-control" placeholder="Telefoon">
-          </div>
-          <div class="form-group mb-4">
-            <input type="email" name="email" class="form-control" placeholder="E-mail">
-          </div>
-          <div class="form-group mb-5">
-            <textarea rows="5" name="message" class="form-control" placeholder="Bericht"></textarea>
-          </div>
-          <div class="form-group mb-0 text-right">
-            <button type="submit" class="btn tm-btn-primary tm-send-btn zz-send-btn">Verzenden</button>
-          </div>
-        </form>
-      </div>
-      <div class="col-xl-8 col-lg-8 tm-circle-img-container tm-contact-right">
-        <div class="zz-text-circle text-left">
-          <h2 class="tm-color-primary">Klachtenportaal</h2>
-          <div class="zz-dynamic-content text-content">
-            <?php
-            $filePath = 'complain.txt';
-            if (file_exists($filePath)) {
-                echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-            } else {
-                echo '-';
-            }
-            ?>
-          </div>
-          <div class="zz-form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
+    <div class="zz-complain-two-col">
+      <div class="zz-complain-content-card">
+        <h2 class="tm-color-primary">Klachtenportaal</h2>
+        <div class="zz-dynamic-content text-content">
+          <?php
+          $filePath = 'complain.txt';
+          if (file_exists($filePath)) {
+              echo nl2br(htmlspecialchars(file_get_contents($filePath)));
+          } else {
+              echo '-';
+          }
+          ?>
         </div>
       </div>
+
+      <form action="#" class="tm-contact-form zz-contact-form zz-contact-form-card zz-complain-form-card" method="POST">
+        <div class="form-group mb-4">
+          <input type="text" name="name" class="form-control" placeholder="Naam">
+        </div>
+        <div class="form-group mb-4">
+          <input type="text" name="phone" class="form-control" placeholder="Telefoon">
+        </div>
+        <div class="form-group mb-4">
+          <input type="email" name="email" class="form-control" placeholder="E-mail">
+        </div>
+        <div class="form-group mb-5">
+          <textarea rows="5" name="message" class="form-control" placeholder="Bericht"></textarea>
+        </div>
+        <div class="form-group mb-0 text-right">
+          <button type="submit" class="btn tm-btn-primary tm-send-btn zz-send-btn">Verzenden</button>
+        </div>
+        <div class="zz-form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
+      </form>
     </div>
   </div>
 </section>
