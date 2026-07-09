@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title><?php
+        $filePath = 'title.txt';  
+        if (file_exists($filePath)) {
+            echo nl2br(htmlspecialchars(file_get_contents($filePath)));
+        } else {
+            echo 'Titel';
+        }
+    ?></title>
+<!-- 
+Moonlight Template 
+https://templatemo.com/tm-512-moonlight
+-->
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css?id=<?php echo filemtime('css/bootstrap-theme.min.css'); ?>">
+        <link rel="stylesheet" href="css/fontAwesome.css?id=<?php echo filemtime('css/fontAwesome.css'); ?>">
+        <link rel="stylesheet" href="css/light-box.css?id=<?php echo filemtime('css/light-box.css'); ?>">
+        <link rel="stylesheet" href="css/templatemo-main.css?id=<?php echo filemtime('css/templatemo-main.css'); ?>">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js?id=<?php echo filemtime('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js'); ?>"></script>
+    </head>
+
+<body>
+    
+    <div class="sequence">
+  
+      <div class="seq-preloader">
+        <svg width="39" height="16" viewBox="0 0 39 16" xmlns="http://www.w3.org/2000/svg" class="seq-preload-indicator"><g fill="#F96D38"><path class="seq-preload-circle seq-preload-circle-1" d="M3.999 12.012c2.209 0 3.999-1.791 3.999-3.999s-1.79-3.999-3.999-3.999-3.999 1.791-3.999 3.999 1.79 3.999 3.999 3.999z"/><path class="seq-preload-circle seq-preload-circle-2" d="M15.996 13.468c3.018 0 5.465-2.447 5.465-5.466 0-3.018-2.447-5.465-5.465-5.465-3.019 0-5.466 2.447-5.466 5.465 0 3.019 2.447 5.466 5.466 5.466z"/><path class="seq-preload-circle seq-preload-circle-3" d="M31.322 15.334c4.049 0 7.332-3.282 7.332-7.332 0-4.049-3.282-7.332-7.332-7.332s-7.332 3.283-7.332 7.332c0 4.05 3.283 7.332 7.332 7.332z"/></g></svg>
+      </div>
+      
+    </div>
+    
+  
+  
+        <nav style="height: 90vh;margin-top: -40px">
+          <ul>
+            <li><a href="index.php"><i class="fa fa-home"></i> <em>Startpagina</em></a></li>
+            <li><a href="about.php"><i class="fa fa-user"></i> <em>Over ons</em></a></li>
+            <li><a href="service.php"><i class="fa fa-pencil"></i> <em>Diensten</em></a></li>
+            <li><a href="contact.php"><i class="fa fa-image"></i> <em>Contact</em></a></li>
+          </ul>
+        </nav>
+        
+
+ <?php
+$defaultBanner = "img/first_bg.jpg";
+$bannerFile = "homeimage.txt";
+
+if (file_exists($bannerFile)) {
+    $bannerUrl = trim(file_get_contents($bannerFile));
+    if ($bannerUrl === "") {
+        $bannerUrl = $defaultBanner;
+    }
+} else {
+    $bannerUrl = $defaultBanner;
+}
+?>
+
+
+        <div class="slides">
+          <div class="slide" id="1" style="background-image: url('<?= htmlspecialchars($bannerUrl) ?>');">
+            <div class="content first-content">
+              <div class="container-fluid">
+                  <div class="col-md-12">
+                      <h2>Startpagina</h2>
+                  </div>
+<div style="min-height: 300px;color: #fff;">
+
+ <?php
+        $filePath = 'home.txt';  
+        if (file_exists($filePath)) {
+            echo nl2br(htmlspecialchars(file_get_contents($filePath)));
+        } else {
+            echo '-';
+        }
+    ?>
+
+
+              </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+<!-- <section style="min-height: 300px;background: #fff;">
+
+
+     <div class="overlay">
+  <div class="container">
+    <div class="row">
+
+
+
+</div>
+    </div>
+    </div>
+
+
+    </section>
+ -->
+
+
+        <div class="footer">
+          <div class="content">
+              <p>Auteursrecht &copy; 2025 Zzpzo</p>
+          </div>
+        </div>
+ 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js?id=<?php echo filemtime('js/vendor/jquery-1.11.2.min.js'); ?>"><\/script>')</script>
+
+    <script src="js/vendor/bootstrap.min.js?id=<?php echo filemtime('js/vendor/bootstrap.min.js'); ?>"></script>
+    
+    <!-- <script src="js/datepicker.js"></script> -->
+    <script src="js/plugins.js?id=<?php echo filemtime('js/plugins.js'); ?>"></script>
+    <script src="js/main.js?id=<?php echo filemtime('js/main.js'); ?>"></script>
+
+  
+</body>
+</html>
