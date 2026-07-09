@@ -15,11 +15,16 @@
         '  #tmSideBar .inner { position: static; width: 100%; }',
         '  .tm-main, .tm-main-row, .tm-content, .tm-section, .zz-content-box, .zz-form-box { height: auto !important; max-height: none !important; }',
         '  .tm-content { align-items: flex-start !important; min-height: auto !important; }',
+        '  .tm-page-4-content { display: block !important; height: auto !important; max-height: none !important; overflow: visible !important; }',
+        '  .tm-contact-col { width: 100% !important; max-width: 100% !important; flex: 0 0 auto !important; height: auto !important; max-height: none !important; }',
+        '  .tm-address-box { height: auto !important; max-height: none !important; overflow: visible !important; margin-bottom: 28px !important; }',
+        '  .contact_message { height: auto !important; max-height: none !important; overflow: visible !important; }',
         '  .zz-dynamic-content, .zz-dynamic-content *, .zz-home-text-wrap, .zz-home-text-wrap * { height: auto !important; min-height: 0 !important; max-height: none !important; overflow: visible !important; }',
         '  .tm-bg-transparent-black { height: auto !important; max-height: none !important; overflow: visible !important; }',
-        '  .tm-contact-col { height: auto !important; max-height: none !important; }',
         '}',
         '@media (max-width: 767px) {',
+        '  .tm-page-4-content { display: block !important; }',
+        '  .tm-address-box { height: auto !important; max-height: none !important; overflow: visible !important; }',
         '  .zz-dynamic-content, .zz-dynamic-content *, .zz-home-text-wrap, .zz-home-text-wrap * { height: auto !important; max-height: none !important; overflow: visible !important; }',
         '}'
     ].join('\n');
