@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="slick/slick-theme.css?id=<?php echo filemtime('slick/slick-theme.css'); ?>" />
   <link rel="stylesheet" href="css/magnific-popup.css?id=<?php echo filemtime('css/magnific-popup.css'); ?>" />
   <link rel="stylesheet" href="css/tooplate-style.css?id=<?php echo filemtime('css/tooplate-style.css'); ?>" />
+  <link rel="stylesheet" href="css/zz-layout-fix.css?id=<?php echo filemtime('css/zz-layout-fix.css'); ?>" />
 </head>
 <?php
 $defaultBanner = "img/photo-02.jpg";
