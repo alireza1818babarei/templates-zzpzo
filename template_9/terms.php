@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <?php
+$version = time();
 $titleFile = 'title.txt';
 $siteTitle = 'Titel';
 
@@ -20,7 +21,7 @@ if (file_exists($titleFile)) {
 <title><?= htmlspecialchars($siteTitle, ENT_QUOTES, 'UTF-8') ?></title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="templatemo-621-luminary-style.css?id=<?php echo filemtime('templatemo-621-luminary-style.css'); ?>">
+<link rel="stylesheet" href="templatemo-621-luminary-style.css?id=<?= $version ?>">
 </head>
 <body>
 
@@ -33,7 +34,7 @@ if (file_exists($titleFile)) {
 <!-- Nav -->
 <nav class="top-nav" id="topNav">
   <a href="index.php" class="nav-brand">
-    <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" style="height: 60%; width: 250px;" onerror="this.remove();">
+    <img src="logo.png?id=<?= $version ?>" alt="Logo" style="height: 60%; width: 250px;" onerror="this.remove();">
   </a>
 
   <ul class="nav-links">
@@ -109,15 +110,15 @@ if (file_exists($titleFile)) {
           $contentFile = 'terms.txt';
 
           if (file_exists($contentFile)) {
-          	$content = file_get_contents($contentFile);
+           	$content = file_get_contents($contentFile);
 
-          	if ($content !== false && trim($content) !== '') {
-          		echo nl2br(htmlspecialchars(trim($content), ENT_QUOTES, 'UTF-8'));
-          	} else {
-          		echo '-';
-          	}
+           	if ($content !== false && trim($content) !== '') {
+           		echo nl2br(htmlspecialchars(trim($content), ENT_QUOTES, 'UTF-8'));
+           	} else {
+           		echo '-';
+           	}
           } else {
-          	echo '-';
+           	echo '-';
           }
           ?>
         </div>
@@ -139,6 +140,6 @@ if (file_exists($titleFile)) {
   </section>
 </main>
 
-<script src="templatemo-621-luminary-page-script.js?id=<?php echo filemtime('templatemo-621-luminary-page-script.js'); ?>"></script>
+<script src="templatemo-621-luminary-page-script.js?id=<?= $version ?>"></script>
 </body>
 </html>
