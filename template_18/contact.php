@@ -51,55 +51,54 @@ if (file_exists($bannerFile)) {
 ?>
 
 
-<section id="form-section" class="tm-section zz-form-section">
+<section class="tm-section zz-page-section zz-contact-content-section">
   <div class="container">
-    <div class="row">
-      <div class="col-xl-5 col-lg-5 tm-flex-center-v tm-section-left">
-        <div class="zz-contact-intro">
-          <div class="zz-page-title">
-            <h2 class="tm-color-primary">Contact</h2>
-          </div>
-          <div class="zz-dynamic-content text-content  x">
-            <?php
-            $filePath = 'contact.txt';
-            if (file_exists($filePath)) {
-                echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-            } else {
-                echo '-';
-            }
-            ?>
-          </div>
-        </div>
-
-        <form action="#" class="tm-contact-form zz-contact-form" method="POST">
-          <div class="form-group mb-4">
-            <input type="text" name="name" class="form-control" placeholder="Naam">
-          </div>
-          <div class="form-group mb-4">
-            <input type="text" name="phone" class="form-control" placeholder="Telefoon">
-          </div>
-          <div class="form-group mb-4">
-            <input type="email" name="email" class="form-control" placeholder="E-mail">
-          </div>
-          <div class="form-group mb-5">
-            <textarea rows="5" name="message" class="form-control" placeholder="Bericht"></textarea>
-          </div>
-          <div class="form-group mb-0 text-right">
-            <button type="submit" class="btn tm-btn-primary tm-send-btn zz-send-btn">Verzenden</button>
-          </div>
-        </form>
-
-        <div class="zz-form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
+    <div class="row zz-content-layout zz-contact-content-layout">
+      <div class="col-xl-7 col-lg-6 tm-circle-img-container zz-content-image-wrap zz-contact-image-wrap">
+        <img src="<?php echo htmlspecialchars($bannerUrl); ?>" alt="Contact" class="rounded-circle tm-circle-img zz-circle-image">
       </div>
 
-      <div class="col-xl-7 col-lg-7 tm-circle-img-container tm-contact-right zz-contact-image-wrap">
-        <img src="<?php echo htmlspecialchars($bannerUrl); ?>" alt="Contact" class="rounded-circle tm-circle-img zz-circle-image">
+      <div class="col-xl-5 col-lg-6 tm-flex-center-v tm-text-container tm-section-left zz-contact-text-panel">
+        <div class="zz-page-title">
+          <h2 class="tm-color-primary">Contact</h2>
+        </div>
+        <div class="zz-dynamic-content text-content">
+          <?php
+          $filePath = 'contact.txt';
+          if (file_exists($filePath)) {
+              echo nl2br(htmlspecialchars(file_get_contents($filePath)));
+          } else {
+              echo '-';
+          }
+          ?>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-
+<section class="tm-section zz-contact-form-section">
+  <div class="container">
+    <form action="#" class="tm-contact-form zz-contact-form zz-contact-form-card" method="POST">
+      <div class="form-group mb-4">
+        <input type="text" name="name" class="form-control" placeholder="Naam">
+      </div>
+      <div class="form-group mb-4">
+        <input type="text" name="phone" class="form-control" placeholder="Telefoon">
+      </div>
+      <div class="form-group mb-4">
+        <input type="email" name="email" class="form-control" placeholder="E-mail">
+      </div>
+      <div class="form-group mb-5">
+        <textarea rows="5" name="message" class="form-control" placeholder="Bericht"></textarea>
+      </div>
+      <div class="form-group mb-0 text-right">
+        <button type="submit" class="btn tm-btn-primary tm-send-btn zz-send-btn">Verzenden</button>
+      </div>
+      <div class="zz-form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
+    </form>
+  </div>
+</section>
 
 <footer class="zz-footer">
   <div class="container">
