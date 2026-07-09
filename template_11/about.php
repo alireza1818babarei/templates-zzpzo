@@ -10,6 +10,8 @@
   <meta charset="utf-8" />
 
   <?php
+  $version = time();
+
   $titleFile = 'title.txt';
   $siteTitle = 'Titel';
 
@@ -35,9 +37,9 @@
 
   <title><?= htmlspecialchars($siteTitle, ENT_QUOTES, 'UTF-8') ?> - Over ons</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-  <link rel="stylesheet" href="assets/css/main.css?id=<?php echo filemtime('assets/css/main.css'); ?>" />
+  <link rel="stylesheet" href="assets/css/main.css?id=<?= $version ?>" />
   <noscript>
-    <link rel="stylesheet" href="assets/css/noscript.css?id=<?php echo filemtime('assets/css/noscript.css'); ?>" />
+    <link rel="stylesheet" href="assets/css/noscript.css?id=<?= $version ?>" />
   </noscript>
 </head>
 
@@ -50,7 +52,7 @@
     <header id="header">
       <div class="logo">
         <a href="index.php" class="navbar-brand" id="brandLogo" style="width: 100%; height: 100%; border-bottom: 0; display: flex ; align-items: center; justify-content: center;" >
-          <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" style="width:100%;" onerror="this.remove();">
+          <img src="logo.png?id=<?= $version ?>" alt="Logo" style="width:100%;" onerror="this.remove();">
         </a>
       </div>
 
@@ -124,11 +126,11 @@
   </script>
 
   <!-- Scripts -->
-  <script src="assets/js/jquery.min.js?id=<?php echo filemtime('assets/js/jquery.min.js'); ?>"></script>
-  <script src="assets/js/browser.min.js?id=<?php echo filemtime('assets/js/browser.min.js'); ?>"></script>
-  <script src="assets/js/breakpoints.min.js?id=<?php echo filemtime('assets/js/breakpoints.min.js'); ?>"></script>
-  <script src="assets/js/util.js?id=<?php echo filemtime('assets/js/util.js'); ?>"></script>
-  <script src="assets/js/main.js?id=<?php echo filemtime('assets/js/main.js'); ?>"></script>
+  <script src="assets/js/jquery.min.js?id=<?= $version ?>"></script>
+  <script src="assets/js/browser.min.js?id=<?= $version ?>"></script>
+  <script src="assets/js/breakpoints.min.js?id=<?= $version ?>"></script>
+  <script src="assets/js/util.js?id=<?= $version ?>"></script>
+  <script src="assets/js/main.js?id=<?= $version ?>"></script>
 
 </body>
 
