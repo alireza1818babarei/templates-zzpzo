@@ -1,0 +1,37 @@
+/* Match the desktop dynamic-text panel height to the adjacent form. */
+@media (min-width: 861px) {
+  .zz-form-section .contact-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .zz-form-section .zz-form-dynamic {
+    flex: 1 1 auto;
+    min-height: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+  }
+
+  .zz-form-section .zz-form-dynamic .zz-dynamic-content {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    padding-right: 1rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-taupe-light) transparent;
+  }
+
+  .zz-form-section .zz-form-dynamic .zz-dynamic-content::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  .zz-form-section .zz-form-dynamic .zz-dynamic-content::-webkit-scrollbar-thumb {
+    background: var(--color-taupe-light);
+    border-radius: 999px;
+  }
+}
