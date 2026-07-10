@@ -1,5 +1,22 @@
 /* Mobile ordering and footer layout corrections for template 25. */
 @media (max-width: 900px) {
+  .site-header-nav {
+    background: #ffffff !important;
+    border-color: rgba(26, 26, 26, 0.12) !important;
+    box-shadow: 0 22px 50px rgba(26, 26, 26, 0.18) !important;
+  }
+
+  .site-header-nav a {
+    background: #ffffff !important;
+    color: var(--ink) !important;
+  }
+
+  .site-header-nav a:hover,
+  .site-header-nav a.nav-active {
+    background: var(--ink) !important;
+    color: #ffffff !important;
+  }
+
   .split-container:not(.split-container-standard) {
     display: flex;
     flex-direction: column;
