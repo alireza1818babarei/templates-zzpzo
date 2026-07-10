@@ -15,6 +15,7 @@ if (file_exists($filePath)) {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="templatemo-split-style.css?id=<?php echo filemtime('templatemo-split-style.css'); ?>">
+<link rel="stylesheet" href="zz-mobile-layout.css?id=<?php echo filemtime('zz-mobile-layout.css'); ?>">
 </head>
 <body>
 <?php
