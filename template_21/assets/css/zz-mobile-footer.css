@@ -1,8 +1,35 @@
-/* Keep the footer at the bottom of short pages on mobile. */
+/* Keep short pages stable and prevent dynamic text from leaving its box. */
+#main,
+#main.container,
+#main .box,
+#main .box > *,
+#main header,
+#main p,
+#main div,
+#main a,
+.zz-home-text-wrap {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+
+#main.container {
+    overflow-x: hidden;
+}
+
+#main .box {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
 @media screen and (max-width: 840px) {
     html,
     body {
         min-height: 100%;
+        overflow-x: hidden;
     }
 
     body {
@@ -16,6 +43,7 @@
         display: flex;
         flex-direction: column;
         padding-bottom: 0;
+        overflow-x: hidden;
     }
 
     #banner {
