@@ -1,9 +1,16 @@
 /* Mobile ordering and footer layout corrections for template 25. */
 @media (max-width: 900px) {
+  .site-header {
+    background: #ffffff !important;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.12) !important;
+    box-shadow: 0 10px 28px rgba(26, 26, 26, 0.14) !important;
+  }
+
   .site-header-nav {
     background: #ffffff !important;
     border-color: rgba(26, 26, 26, 0.12) !important;
     box-shadow: 0 22px 50px rgba(26, 26, 26, 0.18) !important;
+    overflow: hidden;
   }
 
   .site-header-nav a {
