@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
   const header = document.getElementById('header');
   const menuToggle = document.getElementById('menuToggle');
@@ -34,4 +33,33 @@ document.addEventListener('DOMContentLoaded', function () {
   mobileNavLinks.forEach(function (link) {
     link.addEventListener('click', closeMobileNav);
   });
+
+  const formSection = document.querySelector('.zz-form-section');
+
+  if (formSection) {
+    const textPanel = formSection.querySelector('.contact-content');
+    const formPanel = formSection.querySelector('.contact-form-wrapper');
+
+    function syncDesktopPanelHeight() {
+      if (!textPanel || !formPanel) return;
+
+      if (window.innerWidth > 860) {
+        const formHeight = Math.ceil(formPanel.getBoundingClientRect().height);
+        textPanel.style.height = formHeight + 'px';
+        textPanel.style.maxHeight = formHeight + 'px';
+      } else {
+        textPanel.style.removeProperty('height');
+        textPanel.style.removeProperty('max-height');
+      }
+    }
+
+    syncDesktopPanelHeight();
+    window.addEventListener('load', syncDesktopPanelHeight);
+    window.addEventListener('resize', syncDesktopPanelHeight);
+
+    if ('ResizeObserver' in window && formPanel) {
+      const formResizeObserver = new ResizeObserver(syncDesktopPanelHeight);
+      formResizeObserver.observe(formPanel);
+    }
+  }
 });
