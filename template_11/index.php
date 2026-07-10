@@ -46,8 +46,8 @@
     .zz-home-page #footer .copyright .zz-legal-link {
       display: inline-block;
       margin: 0.25rem 0.35rem;
-      font-size: clamp(0.95rem, 1.7vw, 1.15rem);
-      font-weight: 600;
+      font-size: clamp(0.95rem, 1.2vw, 1rem);
+      font-weight: 300;
       letter-spacing: 0.12rem;
       text-transform: uppercase;
     }

@@ -17,7 +17,6 @@ if (file_exists($filePath)) {
 <link rel="stylesheet" href="tooplate-ivory-style.css?id=<?php echo filemtime('tooplate-ivory-style.css'); ?>">
 </head>
 <body>
-<div class="est-label" aria-hidden="true">Opgericht in 2026</div>
 <nav class="pill-nav zz-pill-nav" aria-label="Hoofdnavigatie">
   <a href="index.php" class="navbar-brand" id="brandLogo">
       <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();">
