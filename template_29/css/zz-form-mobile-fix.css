@@ -1,0 +1,33 @@
+/* Template 29 form-page header and mobile dynamic text fixes. */
+.zz-form-section-with-header {
+  position: relative;
+  padding-top: 210px;
+}
+
+@media (max-width: 991px) {
+  .zz-form-copy {
+    min-height: auto !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .zz-form-copy-scroll,
+  .zz-form-copy .zz-dynamic-content {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding-right: 0 !important;
+  }
+
+  .zz-form-section-with-header {
+    padding-top: 170px;
+  }
+}
+
+@media (max-width: 640px) {
+  .zz-form-section-with-header {
+    padding-top: 145px;
+  }
+}
