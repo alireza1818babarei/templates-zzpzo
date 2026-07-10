@@ -12,6 +12,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css?id=<?php echo filemtime('assets/css/main.css'); ?>" />
+        <link rel="stylesheet" href="assets/css/zz-mobile-footer.css?id=<?php echo filemtime('assets/css/zz-mobile-footer.css'); ?>" />
     </head>
     <body class="is-preload">
         <div id="page-wrapper">
