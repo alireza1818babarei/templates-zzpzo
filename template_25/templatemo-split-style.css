@@ -64,6 +64,7 @@ body::before {
 	align-items: center;
 	justify-content: space-between;
 	padding: 1.2rem 3rem;
+	margin-bottom: 20px;
 	pointer-events: none;
 	animation: fadeIn 0.5s ease backwards;
 }
@@ -283,6 +284,7 @@ body::before {
 	opacity: 1;
 	transform: translateY(0);
 	pointer-events: auto;
+	margin-top: 19px;
 	z-index: 2;
 }
 
