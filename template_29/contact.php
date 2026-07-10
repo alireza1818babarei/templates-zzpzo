@@ -20,6 +20,7 @@ if (file_exists($filePath)) {
     <link rel="stylesheet" href="css/owl-carousel.css?id=<?php echo filemtime('css/owl-carousel.css'); ?>">
     <link rel="stylesheet" href="css/datepicker.css?id=<?php echo filemtime('css/datepicker.css'); ?>">
     <link rel="stylesheet" href="css/tooplate-style.css?id=<?php echo filemtime('css/tooplate-style.css'); ?>">
+    <link rel="stylesheet" href="css/zz-form-mobile-fix.css?id=<?php echo filemtime('css/zz-form-mobile-fix.css'); ?>">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 </head>
 <body>
