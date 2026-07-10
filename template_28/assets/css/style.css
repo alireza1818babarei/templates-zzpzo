@@ -242,6 +242,7 @@ body {
   color: #d1faf5;
   padding: 36px 22px;
   text-align: center;
+  gap: 0px;
 }
 
 .site-footer a {
