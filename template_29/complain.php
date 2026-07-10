@@ -20,12 +20,30 @@ if (file_exists($filePath)) {
     <link rel="stylesheet" href="css/owl-carousel.css?id=<?php echo filemtime('css/owl-carousel.css'); ?>">
     <link rel="stylesheet" href="css/datepicker.css?id=<?php echo filemtime('css/datepicker.css'); ?>">
     <link rel="stylesheet" href="css/tooplate-style.css?id=<?php echo filemtime('css/tooplate-style.css'); ?>">
+    <link rel="stylesheet" href="css/zz-form-mobile-fix.css?id=<?php echo filemtime('css/zz-form-mobile-fix.css'); ?>">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 </head>
 <body>
 <div class="zz-page">
 
-<section class="zz-form-section">
+<section class="zz-form-section zz-form-section-with-header">
+    <header class="zz-header">
+        <div class="zz-logo-slot">
+            <a href="index.php" class="navbar-brand" id="brandLogo">
+                <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" style="width:50px;margin-top:-5px;" onerror="this.remove();">
+            </a>
+        </div>
+        <nav class="zz-menu-wrap">
+            <button class="zz-menu-toggle" type="button">Menu</button>
+            <ul class="zz-menu">
+                <li><a href="index.php" class="">Startpagina</a></li>
+                <li><a href="about.php" class="">Over ons</a></li>
+                <li><a href="service.php" class="">Diensten</a></li>
+                <li><a href="contact.php" class="">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <div class="zz-form-shell">
         <div class="zz-form-row">
             <div class="zz-form-copy">
