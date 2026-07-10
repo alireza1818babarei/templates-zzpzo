@@ -1,0 +1,28 @@
+/* Keep the two middle navigation hover areas separated. */
+#header nav.use-middle:after {
+  display: none;
+}
+
+#header nav.use-middle ul {
+  overflow: hidden;
+}
+
+#header nav.use-middle ul li {
+  position: relative;
+  overflow: hidden;
+}
+
+#header nav.use-middle ul li.is-middle {
+  border-left: solid 1px #ffffff;
+}
+
+#header nav.use-middle ul li a {
+  position: relative;
+  z-index: 1;
+}
+
+@media screen and (max-width: 480px) {
+  #header nav.use-middle ul li.is-middle {
+    border-left: 0;
+  }
+}
