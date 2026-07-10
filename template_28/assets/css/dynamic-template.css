@@ -113,3 +113,49 @@ html,body {
   overflow-x: auto;
   white-space: pre-wrap;
 }
+
+/* Larger touch spacing when navigation or footer links wrap on mobile. */
+@media (max-width:800px) {
+  .main-nav {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .main-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  .site-footer > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 12px;
+    margin-top: 10px;
+  }
+
+  .site-footer > div:last-child a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    margin: 0;
+    padding: 8px 14px;
+    border-radius: 999px;
+  }
+}
+
+@media (max-width:520px) {
+  .site-footer > div:last-child {
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .site-footer > div:last-child a {
+    width: min(100%,320px);
+    min-height: 48px;
+  }
+}
