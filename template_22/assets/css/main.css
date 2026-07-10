@@ -2326,8 +2326,14 @@ body.is-touch .main {
 }
 
 #footer a {
-  color: inherit;
+  color: rgba(255, 255, 255, 0.799);
+  text-decoration: none;
 }
+
+#footer p {
+  color: rgba(255, 255, 255, 0.799);
+}
+
 
 #footer a:hover {
   color: #b9babb;
@@ -2425,6 +2431,7 @@ body.is-touch .main {
   -ms-transform: translateY(0);
   transform: translateY(0);
   position: relative;
+  margin-bottom: 100px;
 }
 
 #contact.inactive .box {
