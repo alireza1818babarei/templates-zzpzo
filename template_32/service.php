@@ -15,6 +15,7 @@ if (file_exists($filePath)) {
   <link rel="stylesheet" href="css/all.min.css?id=<?php echo filemtime('css/all.min.css'); ?>" />
   <link rel="stylesheet" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>" />
   <link rel="stylesheet" href="css/tooplate-style.css?id=<?php echo filemtime('css/tooplate-style.css'); ?>" />
+  <link rel="stylesheet" href="css/zz-mobile-layout-fix.css?id=<?php echo filemtime('css/zz-mobile-layout-fix.css'); ?>" />
 </head>
 <body>
 
