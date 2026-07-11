@@ -50,7 +50,6 @@
 			<a href="index.php" class="navbar-brand" id="brandLogo" style="border-bottom: 0;">
 				<img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" style="width:250px;margin-top:-5px;" onerror="this.remove();">
 			</a>
-			<h1><?= htmlspecialchars($siteTitle, ENT_QUOTES, 'UTF-8') ?></h1>
 			<p>Welkom op onze website.</p>
 			<ul class="actions">
 				<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Doorgaan</a></li>

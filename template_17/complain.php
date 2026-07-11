@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       'message' => $formMessage
     ];
 
-    $curl = curl_init('https://zzpzo.net/insertuserscontactform');
+    $curl = curl_init('https://zzpzo.net/api/v1/insertuserscontactform');
 
     curl_setopt_array($curl, [
       CURLOPT_POST => true,
@@ -70,23 +70,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?php
-$filePath = 'title.txt';
-if (file_exists($filePath)) {
-    echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-} else {
-    echo 'Titel';
-}
-?> - Klachtenportaal</title>
+  <title>
+    <?php
+    $filePath = 'title.txt';
+    if (file_exists($filePath)) {
+      echo nl2br(htmlspecialchars(file_get_contents($filePath)));
+    } else {
+      echo 'Titel';
+    }
+    ?> - Klachtenportaal
+  </title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
   <link rel="stylesheet" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>">
   <link rel="stylesheet" href="css/fontawesome-all.min.css?id=<?php echo filemtime('css/fontawesome-all.min.css'); ?>">
   <link rel="stylesheet" href="css/tooplate-style.css?id=<?php echo filemtime('css/tooplate-style.css'); ?>">
   <link rel="stylesheet" href="css/zz-form-feedback.css?id=<?php echo filemtime('css/zz-form-feedback.css'); ?>">
 </head>
+
 <body>
   <div id="loader-wrapper">
     <div id="loader"></div>
@@ -98,7 +102,7 @@ if (file_exists($filePath)) {
 
       <nav class="zz-top-nav">
         <a href="index.php" class="navbar-brand" id="brandLogo">
-            <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();">
+          <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();">
         </a>
         <button class="zz-menu-toggle" type="button" aria-label="Menu">☰</button>
         <div class="zz-menu-wrap">
@@ -123,9 +127,9 @@ if (file_exists($filePath)) {
                   <?php
                   $filePath = 'complain.txt';
                   if (file_exists($filePath)) {
-                      echo nl2br(htmlspecialchars(file_get_contents($filePath)));
+                    echo nl2br(htmlspecialchars(file_get_contents($filePath)));
                   } else {
-                      echo '-';
+                    echo '-';
                   }
                   ?>
                 </div>
@@ -145,16 +149,23 @@ if (file_exists($filePath)) {
 
                 <form action="" method="POST">
                   <div class="form-group"><input type="text" name="name" class="form-control" placeholder="Naam"
-                      value="<?php echo htmlspecialchars($formName, ENT_QUOTES, 'UTF-8'); ?>" maxlength="150" autocomplete="name" required></div>
+                      value="<?php echo htmlspecialchars($formName, ENT_QUOTES, 'UTF-8'); ?>" maxlength="150"
+                      autocomplete="name" required></div>
                   <div class="form-group"><input type="text" name="phone" class="form-control" placeholder="Telefoon"
-                      value="<?php echo htmlspecialchars($formPhone, ENT_QUOTES, 'UTF-8'); ?>" maxlength="50" autocomplete="tel"></div>
+                      value="<?php echo htmlspecialchars($formPhone, ENT_QUOTES, 'UTF-8'); ?>" maxlength="50"
+                      autocomplete="tel"></div>
                   <div class="form-group"><input type="email" name="email" class="form-control" placeholder="E-mail"
-                      value="<?php echo htmlspecialchars($formEmail, ENT_QUOTES, 'UTF-8'); ?>" maxlength="254" autocomplete="email" required></div>
+                      value="<?php echo htmlspecialchars($formEmail, ENT_QUOTES, 'UTF-8'); ?>" maxlength="254"
+                      autocomplete="email" required></div>
                   <div class="form-group tm-mb-20"><textarea rows="5" name="message" class="form-control"
-                      placeholder="Bericht" maxlength="5000" required><?php echo htmlspecialchars($formMessage); ?></textarea></div>
-                  <div class="form-group"><button type="submit" class="btn btn-primary tm-btn-send">Verzenden</button></div>
+                      placeholder="Bericht" maxlength="5000"
+                      required><?php echo htmlspecialchars($formMessage); ?></textarea></div>
+                  <div class="form-group"><button type="submit" class="btn btn-primary tm-btn-send">Verzenden</button>
+                  </div>
                 </form>
-                <div class="zz-form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
+                <div class="zz-form-note">Deze site wordt beschermd door reCAPTCHA. Het <a
+                    href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google
+                  zijn van toepassing.</div>
               </div>
             </div>
           </div>
@@ -164,7 +175,9 @@ if (file_exists($filePath)) {
       <footer class="zz-footer">
         <div class="container">
           <div class="row align-items-center">
-            <div class="col-sm-12 col-md-6"><p>Auteursrecht &copy; <?php echo date('Y'); ?> ZZpzo</p></div>
+            <div class="col-sm-12 col-md-6">
+              <p>Auteursrecht &copy; <?php echo date('Y'); ?> ZZpzo</p>
+            </div>
             <div class="col-sm-12 col-md-6 zz-footer-links">
               <a href="terms.php">Algemene voorwaarden</a>
               <a href="complain.php">Klachtenportaal</a>
@@ -178,4 +191,5 @@ if (file_exists($filePath)) {
   <script src="js/jquery-3.2.1.slim.min.js?id=<?php echo filemtime('js/jquery-3.2.1.slim.min.js'); ?>"></script>
   <script src="js/zz-dynamic.js?id=<?php echo filemtime('js/zz-dynamic.js'); ?>"></script>
 </body>
+
 </html>

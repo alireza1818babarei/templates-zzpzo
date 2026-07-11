@@ -142,19 +142,6 @@ body {
   position: relative;
 }
 
-.hero-media:after {
-  content: 'GOEDGEKEURD';
-  position: absolute;
-  right: 10%;
-  bottom: 8%;
-  border: 4px solid #ef476f;
-  color: #ef476f;
-  border-radius: 999px;
-  padding: 14px 18px;
-  font-weight: 900;
-  transform: rotate(-12deg);
-}
-
 .hero-media img {
   width: 100%;
 }

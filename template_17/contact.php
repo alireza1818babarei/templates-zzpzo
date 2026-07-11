@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       'message' => $formMessage
     ];
 
-    $curl = curl_init('https://zzpzo.net/insertuserscontactform');
+    $curl = curl_init('https://zzpzo.net/api/v1/insertuserscontactform');
 
     curl_setopt_array($curl, [
       CURLOPT_POST => true,

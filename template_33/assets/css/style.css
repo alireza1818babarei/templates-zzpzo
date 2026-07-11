@@ -265,6 +265,7 @@ body {
   color: white;
   padding: 15px 22px;
   font-weight: 900;
+  cursor: pointer !important;
 }
 
 .recaptcha a {

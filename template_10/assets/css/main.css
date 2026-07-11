@@ -3776,6 +3776,9 @@ body.is-preload #banner > .inner {
 }
 
 #wrapper > * > .inner {
+  display: flex;
+  justify-content: center;
+  text-align: center;
   padding: 4em 0 2em 0;
   margin: 0 auto;
   max-width: 65em;

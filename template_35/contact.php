@@ -59,7 +59,6 @@ if (file_exists($bannerFile)) {
             <div class="row tm-register-row tm-mb-35 zz-form-row">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 tm-login-l">
                     <form action="#" method="post" class="tm-bg-black p-5 h-100 zz-standard-form">
-                        <h3 class="mt-0 text-white font-weight-light mb-5">Contact</h3>
                         <div class="input-field">
                             <input placeholder="Naam" id="name" name="name" type="text" class="validate">
                         </div>

@@ -79,7 +79,7 @@
 
       <div class="content">
         <div class="inner">
-          <h1><?= htmlspecialchars($siteTitle, ENT_QUOTES, 'UTF-8') ?></h1>
+          <h1>Startpagina</h1>
           <p>Welkom op onze website.</p>
         </div>
       </div>
