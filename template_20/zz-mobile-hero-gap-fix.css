@@ -1,19 +1,12 @@
-/* Remove the stretched blank area above page titles on mobile. */
+/* Hide the separate page-title panel below the hero image on mobile. */
 @media (max-width: 768px) {
   .zz-hero-section {
     min-height: auto !important;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto !important;
     align-content: start;
   }
 
   .zz-hero-content {
-    justify-content: flex-start !important;
-    padding: 0 40px 40px !important;
-  }
-}
-
-@media (max-width: 420px) {
-  .zz-hero-content {
-    padding: 0 24px 32px !important;
+    display: none !important;
   }
 }
