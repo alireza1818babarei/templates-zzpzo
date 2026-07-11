@@ -6,6 +6,7 @@
   line-height: 1.5;
   text-align: left;
   overflow-wrap: anywhere;
+  scroll-margin-top: 6rem;
 }
 
 .zz-form-feedback-success {
@@ -18,4 +19,20 @@
   color: #721c24;
   background: #f8d7da;
   border-color: #f5c6cb;
+}
+
+@media screen and (max-width: 767px) {
+  .zz-contact-text,
+  .zz-contact-text .zz-dynamic-content,
+  .zz-contact-text .text-content {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .zz-contact-text .zz-dynamic-content,
+  .zz-contact-text .text-content {
+    padding-right: 0 !important;
+  }
 }

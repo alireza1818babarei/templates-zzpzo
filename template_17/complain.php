@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $formEmail = isset($_POST['email']) ? trim($_POST['email']) : '';
   $formMessage = isset($_POST['message']) ? trim($_POST['message']) : '';
 
+
   if ($formName === '' || $formEmail === '' || $formMessage === '') {
     $formError = 'Vul alle verplichte velden in.';
   } elseif (!filter_var($formEmail, FILTER_VALIDATE_EMAIL)) {
@@ -59,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     curl_close($curl);
 
     if ($curlError === '' && $httpCode >= 200 && $httpCode < 300) {
-      header('Location: complain.php?sent=1');
+      header('Location: complain.php?sent=1#form-feedback');
       exit;
     }
 
@@ -136,13 +137,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-sm-4 mb-md-0 mb-4">
                 <?php if ($formSuccess !== ''): ?>
-                  <div class="zz-form-feedback zz-form-feedback-success" role="status" aria-live="polite">
+                  <div id="form-feedback" class="zz-form-feedback zz-form-feedback-success" role="status" aria-live="polite">
                     <?php echo htmlspecialchars($formSuccess); ?>
                   </div>
                 <?php endif; ?>
 
                 <?php if ($formError !== ''): ?>
-                  <div class="zz-form-feedback zz-form-feedback-error" role="alert">
+                  <div id="form-feedback" class="zz-form-feedback zz-form-feedback-error" role="alert">
                     <?php echo htmlspecialchars($formError); ?>
                   </div>
                 <?php endif; ?>
@@ -191,5 +192,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <script src="js/jquery-3.2.1.slim.min.js?id=<?php echo filemtime('js/jquery-3.2.1.slim.min.js'); ?>"></script>
   <script src="js/zz-dynamic.js?id=<?php echo filemtime('js/zz-dynamic.js'); ?>"></script>
 </body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2849b00648a7e67c9ffbc11358c845e470ac863b
 </html>
