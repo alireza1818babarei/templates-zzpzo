@@ -38,6 +38,11 @@
 
 /* Stack the text and form sooner and remove excessive spacing at tablet widths. */
 @media (max-width: 1100px) {
+  .site-header {
+    position: sticky !important;
+    top: 0;
+  }
+
   .zz-form-section {
     min-height: auto !important;
     padding: 2.75rem 0 4rem !important;
