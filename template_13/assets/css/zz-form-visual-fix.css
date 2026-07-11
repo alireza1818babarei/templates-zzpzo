@@ -1,0 +1,9 @@
+/* Lighter form labels and thinner input underlines. */
+.contact-form .field label {
+  font-weight: 400 !important;
+}
+
+.contact-form .field input,
+.contact-form .field textarea {
+  border-bottom-width: 1px !important;
+}
