@@ -16,6 +16,7 @@ if (file_exists($filePath)) {
     <link rel="stylesheet" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="css/materialize.min.css?id=<?php echo filemtime('css/materialize.min.css'); ?>">
     <link rel="stylesheet" href="css/tooplate.css?id=<?php echo filemtime('css/tooplate.css'); ?>">
+    <link rel="stylesheet" href="css/zz-responsive-fixes.css?id=<?php echo filemtime('css/zz-responsive-fixes.css'); ?>">
 </head>
 
 <?php
@@ -108,6 +109,7 @@ if (file_exists($bannerFile)) {
     
 <script src="js/jquery-3.2.1.slim.min.js?id=<?php echo filemtime('js/jquery-3.2.1.slim.min.js'); ?>"></script>
 <script src="js/materialize.min.js?id=<?php echo filemtime('js/materialize.min.js'); ?>"></script>
+<script src="js/zz-form-height.js?id=<?php echo filemtime('js/zz-form-height.js'); ?>"></script>
 <script>
     $(document).ready(function () {
         $('select').formSelect();
