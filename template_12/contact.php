@@ -26,6 +26,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 
   <link rel="stylesheet" href="assets/css/main.css?id=<?php echo filemtime('assets/css/main.css'); ?>" />
+  <link rel="stylesheet" href="assets/css/zz-contact-reveal-fix.css?id=<?php echo filemtime('assets/css/zz-contact-reveal-fix.css'); ?>" />
   <noscript>
     <link rel="stylesheet" href="assets/css/noscript.css?id=<?php echo filemtime('assets/css/noscript.css'); ?>" />
   </noscript>
