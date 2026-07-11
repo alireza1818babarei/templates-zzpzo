@@ -1,102 +1,28 @@
+<?php
+$formSuccess='';$formError='';$formName='';$formPhone='';$formEmail='';$formMessage='';
+if(isset($_GET['sent'])&&$_GET['sent']==='1'){$formSuccess='Uw klacht is succesvol verzonden.';}
+if($_SERVER['REQUEST_METHOD']==='POST'){
+  $formName=isset($_POST['name'])?trim($_POST['name']):'';$formPhone=isset($_POST['phone'])?trim($_POST['phone']):'';$formEmail=isset($_POST['email'])?trim($_POST['email']):'';$formMessage=isset($_POST['message'])?trim($_POST['message']):'';
+  if($formName===''||$formEmail===''||$formMessage===''){$formError='Vul alle verplichte velden in.';}elseif(!filter_var($formEmail,FILTER_VALIDATE_EMAIL)){$formError='Vul een geldig e-mailadres in.';}elseif(!function_exists('curl_init')){$formError='De klacht kon niet worden verzonden. Probeer het later opnieuw.';error_log('Complaint API error: cURL is not available.');}else{
+    $domain=isset($_SERVER['SERVER_NAME'])?$_SERVER['SERVER_NAME']:'';if($domain===''&&isset($_SERVER['HTTP_HOST'])){$domain=$_SERVER['HTTP_HOST'];}$domain=preg_replace('/:\d+$/','',$domain);
+    $payload=['domain'=>$domain,'page'=>'complain','name'=>$formName,'phone'=>$formPhone,'email'=>$formEmail,'message'=>$formMessage];
+    $curl=curl_init('https://zzpzo.net/api/v1/insertuserscontactform');curl_setopt_array($curl,[CURLOPT_POST=>true,CURLOPT_POSTFIELDS=>http_build_query($payload),CURLOPT_HTTPHEADER=>['Content-Type: application/x-www-form-urlencoded'],CURLOPT_RETURNTRANSFER=>true,CURLOPT_CONNECTTIMEOUT=>5,CURLOPT_TIMEOUT=>15]);
+    $apiResponse=curl_exec($curl);$httpCode=curl_getinfo($curl,CURLINFO_HTTP_CODE);$curlError=curl_error($curl);curl_close($curl);
+    if($curlError===''&&$httpCode>=200&&$httpCode<300){header('Location: complain.php?sent=1#form-feedback');exit;}
+    $formError='De klacht kon niet worden verzonden. Probeer het later opnieuw.';error_log('Complaint API error. HTTP: '.$httpCode.' Curl: '.$curlError.' Response: '.$apiResponse);
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <title><?php
-$filePath = 'title.txt';
-if (file_exists($filePath)) {
-    echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-} else {
-    echo 'Titel';
-}
-?> - Klachtenportaal</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>">
-    <link rel="stylesheet" href="css/tooplate-style.css?id=<?php echo filemtime('css/tooplate-style.css'); ?>">
-    <link rel="stylesheet" href="css/zz-mobile-content-order.css?id=<?php echo filemtime('css/zz-mobile-content-order.css'); ?>">
-</head>
-<body>
-<div class="tm-container mx-auto">
-
-
-<nav class="zz-fixed-menu">
-  <div class="zz-menu-card">
-    <a href="index.php" class="navbar-brand" id="brandLogo">
-        <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();">
-    </a>
-    <button class="zz-menu-toggle" type="button" aria-label="Menu">☰</button>
-    <ul class="zz-menu-links">
-      <li><a href="index.php" title="Startpagina" class=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5v8.5a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Startpagina</span></a></li>
-      <li><a href="about.php" title="Over ons" class=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg><span>Over ons</span></a></li>
-      <li><a href="service.php" title="Diensten" class=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 7.5 12 2 3 7.5v9L12 22l9-5.5Zm-9 2.1L6.5 6.4 12 3.1l5.5 3.3Zm-1 10.1-6-3.7V8.6l6 3.6Zm2 0v-7.5l6-3.6V16Z"/></svg><span>Diensten</span></a></li>
-      <li><a href="contact.php" title="Contact" class=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm8 7.2L4.4 7H4v.8l8 5.5 8-5.5V7h-.4Z"/></svg><span>Contact</span></a></li>
-    </ul>
-  </div>
-</nav>
-
-
-<section class="tm-section zz-complain-layout-section">
-  <div class="container">
-    <div class="zz-complain-two-col">
-      <div class="zz-complain-content-card">
-        <h2 class="tm-color-primary">Klachtenportaal</h2>
-        <div class="zz-dynamic-content text-content">
-          <?php
-          $filePath = 'complain.txt';
-          if (file_exists($filePath)) {
-              echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-          } else {
-              echo '-';
-          }
-          ?>
-        </div>
-      </div>
-
-      <form action="#" class="tm-contact-form zz-contact-form zz-contact-form-card zz-complain-form-card" method="POST">
-        <div class="form-group mb-4">
-          <input type="text" name="name" class="form-control" placeholder="Naam">
-        </div>
-        <div class="form-group mb-4">
-          <input type="text" name="phone" class="form-control" placeholder="Telefoon">
-        </div>
-        <div class="form-group mb-4">
-          <input type="email" name="email" class="form-control" placeholder="E-mail">
-        </div>
-        <div class="form-group mb-5">
-          <textarea rows="5" name="message" class="form-control" placeholder="Bericht"></textarea>
-        </div>
-        <div class="form-group mb-0 text-right">
-          <button type="submit" class="btn tm-btn-primary tm-send-btn zz-send-btn">Verzenden</button>
-        </div>
-        <div class="zz-form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
-      </form>
-    </div>
-  </div>
-</section>
-
-<footer class="zz-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-sm-12">
-        <p>Auteursrecht &copy; <?php echo date('Y'); ?> ZZpzo</p>
-      </div>
-      <div class="col-md-6 col-sm-12 zz-footer-links">
-        <a href="terms.php">Algemene voorwaarden</a>
-        <a href="complain.php">Klachtenportaal</a>
-        <a href="privacy.php">Privacybeleid</a>
-      </div>
-    </div>
-  </div>
-</footer>
-</div>
-<script src="js/smooth-scroll.polyfills.min.js?id=<?php echo filemtime('js/smooth-scroll.polyfills.min.js'); ?>"></script>
-<script src="js/zz-dynamic.js?id=<?php echo filemtime('js/zz-dynamic.js'); ?>"></script>
-<script>
-var scroll = new SmoothScroll('a[href^="#"]', {
-    easing: 'easeInOutQuart',
-    speed: 800
-});
-</script>
-</body>
-</html>
+<head><meta charset="UTF-8"><title><?php $filePath='title.txt';if(file_exists($filePath)){echo nl2br(htmlspecialchars(file_get_contents($filePath)));}else{echo 'Titel';} ?> - Klachtenportaal</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><link rel="stylesheet" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>"><link rel="stylesheet" href="css/tooplate-style.css?id=<?php echo filemtime('css/tooplate-style.css'); ?>"><link rel="stylesheet" href="css/zz-mobile-content-order.css?id=<?php echo filemtime('css/zz-mobile-content-order.css'); ?>"><style>.zz-form-feedback{margin:0 0 1.25rem;padding:.9rem 1rem;border:1px solid transparent;border-radius:4px;line-height:1.5;text-align:left;overflow-wrap:anywhere;scroll-margin-top:7rem}.zz-form-feedback-success{color:#155724;background:#d4edda;border-color:#c3e6cb}.zz-form-feedback-error{color:#721c24;background:#f8d7da;border-color:#f5c6cb}.zz-dynamic-content{max-width:100%;box-sizing:border-box;overflow-wrap:anywhere;word-break:break-word;overflow-x:hidden}@media(max-width:767px){.zz-complain-content-card,.zz-dynamic-content{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}}</style></head>
+<body><div class="tm-container mx-auto">
+<nav class="zz-fixed-menu"><div class="zz-menu-card"><a href="index.php" class="navbar-brand" id="brandLogo"><img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();"></a><button class="zz-menu-toggle" type="button" aria-label="Menu">☰</button><ul class="zz-menu-links"><li><a href="index.php" title="Startpagina"><span>Startpagina</span></a></li><li><a href="about.php" title="Over ons"><span>Over ons</span></a></li><li><a href="service.php" title="Diensten"><span>Diensten</span></a></li><li><a href="contact.php" title="Contact"><span>Contact</span></a></li></ul></div></nav>
+<section class="tm-section zz-complain-layout-section"><div class="container"><div class="zz-complain-two-col"><div class="zz-complain-content-card"><h2 class="tm-color-primary">Klachtenportaal</h2><div class="zz-dynamic-content text-content"><?php $filePath='complain.txt';if(file_exists($filePath)){echo nl2br(htmlspecialchars(file_get_contents($filePath)));}else{echo '-';} ?></div></div>
+<div>
+<?php if($formSuccess!==''): ?><div id="form-feedback" class="zz-form-feedback zz-form-feedback-success" role="status" aria-live="polite"><?php echo htmlspecialchars($formSuccess); ?></div><?php endif; ?><?php if($formError!==''): ?><div id="form-feedback" class="zz-form-feedback zz-form-feedback-error" role="alert"><?php echo htmlspecialchars($formError); ?></div><?php endif; ?>
+<form action="" class="tm-contact-form zz-contact-form zz-contact-form-card zz-complain-form-card" method="POST"><div class="form-group mb-4"><input type="text" name="name" class="form-control" placeholder="Naam" value="<?php echo htmlspecialchars($formName,ENT_QUOTES,'UTF-8'); ?>" maxlength="150" autocomplete="name" required></div><div class="form-group mb-4"><input type="text" name="phone" class="form-control" placeholder="Telefoon" value="<?php echo htmlspecialchars($formPhone,ENT_QUOTES,'UTF-8'); ?>" maxlength="50" autocomplete="tel"></div><div class="form-group mb-4"><input type="email" name="email" class="form-control" placeholder="E-mail" value="<?php echo htmlspecialchars($formEmail,ENT_QUOTES,'UTF-8'); ?>" maxlength="254" autocomplete="email" required></div><div class="form-group mb-5"><textarea rows="5" name="message" class="form-control" placeholder="Bericht" maxlength="5000" required><?php echo htmlspecialchars($formMessage); ?></textarea></div><div class="form-group mb-0 text-right"><button type="submit" class="btn tm-btn-primary tm-send-btn zz-send-btn">Verzenden</button></div><div class="zz-form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div></form>
+</div></div></div></section>
+<footer class="zz-footer"><div class="container"><div class="row"><div class="col-md-6 col-sm-12"><p>Auteursrecht &copy; <?php echo date('Y'); ?> ZZpzo</p></div><div class="col-md-6 col-sm-12 zz-footer-links"><a href="terms.php">Algemene voorwaarden</a><a href="complain.php">Klachtenportaal</a><a href="privacy.php">Privacybeleid</a></div></div></div></footer></div>
+<script src="js/smooth-scroll.polyfills.min.js?id=<?php echo filemtime('js/smooth-scroll.polyfills.min.js'); ?>"></script><script src="js/zz-dynamic.js?id=<?php echo filemtime('js/zz-dynamic.js'); ?>"></script><script>var scroll=new SmoothScroll('a[href^="#"]',{easing:'easeInOutQuart',speed:800});(function(){window.addEventListener('load',function(){var f=document.getElementById('form-feedback');if(f){setTimeout(function(){f.scrollIntoView({behavior:'smooth',block:'center'});},220);}});})();</script>
+</body></html>
