@@ -1,103 +1,41 @@
+<?php
+$formSuccess='';$formError='';$formName='';$formPhone='';$formEmail='';$formMessage='';
+if(isset($_GET['sent'])&&$_GET['sent']==='1'){$formSuccess='Uw bericht is succesvol verzonden.';}
+if($_SERVER['REQUEST_METHOD']==='POST'){
+  $formName=isset($_POST['name'])?trim($_POST['name']):'';$formPhone=isset($_POST['phone'])?trim($_POST['phone']):'';$formEmail=isset($_POST['email'])?trim($_POST['email']):'';$formMessage=isset($_POST['message'])?trim($_POST['message']):'';
+  if($formName===''||$formEmail===''||$formMessage===''){$formError='Vul alle verplichte velden in.';}elseif(!filter_var($formEmail,FILTER_VALIDATE_EMAIL)){$formError='Vul een geldig e-mailadres in.';}elseif(!function_exists('curl_init')){$formError='Het bericht kon niet worden verzonden. Probeer het later opnieuw.';error_log('Contact API error: cURL is not available.');}else{
+    $domain=isset($_SERVER['SERVER_NAME'])?$_SERVER['SERVER_NAME']:'';if($domain===''&&isset($_SERVER['HTTP_HOST'])){$domain=$_SERVER['HTTP_HOST'];}$domain=preg_replace('/:\d+$/','',$domain);
+    $payload=['domain'=>$domain,'page'=>'contact','name'=>$formName,'phone'=>$formPhone,'email'=>$formEmail,'message'=>$formMessage];
+    $curl=curl_init('https://zzpzo.net/api/v1/insertuserscontactform');curl_setopt_array($curl,[CURLOPT_POST=>true,CURLOPT_POSTFIELDS=>http_build_query($payload),CURLOPT_HTTPHEADER=>['Content-Type: application/x-www-form-urlencoded'],CURLOPT_RETURNTRANSFER=>true,CURLOPT_CONNECTTIMEOUT=>5,CURLOPT_TIMEOUT=>15]);
+    $apiResponse=curl_exec($curl);$httpCode=curl_getinfo($curl,CURLINFO_HTTP_CODE);$curlError=curl_error($curl);curl_close($curl);
+    if($curlError===''&&$httpCode>=200&&$httpCode<300){header('Location: contact.php?sent=1#form-feedback');exit;}
+    $formError='Het bericht kon niet worden verzonden. Probeer het later opnieuw.';error_log('Contact API error. HTTP: '.$httpCode.' Curl: '.$curlError.' Response: '.$apiResponse);
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="nl">
-
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>
-    <?php
-    $filePath = 'title.txt';
-    if (file_exists($filePath)) {
-      echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-    } else {
-      echo 'Titel';
-    }
-    ?> - Contact
-  </title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?id=<?php echo filemtime('css/style.css'); ?>">
-  <link rel="stylesheet" href="css/zz-responsive-fixes.css?id=<?php echo filemtime('css/zz-responsive-fixes.css'); ?>">
+  <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?php $filePath='title.txt';if(file_exists($filePath)){echo nl2br(htmlspecialchars(file_get_contents($filePath)));}else{echo 'Titel';} ?> - Contact</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?id=<?php echo filemtime('css/style.css'); ?>"><link rel="stylesheet" href="css/zz-responsive-fixes.css?id=<?php echo filemtime('css/zz-responsive-fixes.css'); ?>">
+  <style>.zz-form-feedback{margin:0 0 1.25rem;padding:.9rem 1rem;border:1px solid transparent;border-radius:4px;line-height:1.5;text-align:left;overflow-wrap:anywhere;scroll-margin-top:7rem}.zz-form-feedback-success{color:#155724;background:#d4edda;border-color:#c3e6cb}.zz-form-feedback-error{color:#721c24;background:#f8d7da;border-color:#f5c6cb}.text-content{max-width:100%;box-sizing:border-box;overflow-wrap:anywhere;word-break:break-word;overflow-x:hidden}@media(max-width:767px){.contact-copy,.text-content{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}}</style>
 </head>
-
 <body>
-  <header class="site-header">
-    <div class="nav-shell">
-      <a href="index.php" class="navbar-brand" id="brandLogo">
-        <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();">
-      </a>
-      <button class="nav-toggle" type="button" aria-label="Menu openen/sluiten" aria-expanded="false">&#9776;</button>
-      <nav class="nav-menu">
-        <ul>
-          <li><a href="index.php" class="">Startpagina</a></li>
-          <li><a href="about.php" class="">Over ons</a></li>
-          <li><a href="service.php" class="">Diensten</a></li>
-          <li><a href="contact.php" class="active">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <?php
-    $defaultBanner = "img/bg-img-06.jpg";
-    $bannerFile = "contactimage.txt";
-
-    if (file_exists($bannerFile)) {
-      $bannerUrl = trim(file_get_contents($bannerFile));
-      if ($bannerUrl === "") {
-        $bannerUrl = $defaultBanner;
-      }
-    } else {
-      $bannerUrl = $defaultBanner;
-    }
-    ?>
-    <section class="hero-short" style="background-image: url('<?php echo htmlspecialchars($bannerUrl); ?>');">
-      <div class="hero-inner" style="margin-bottom: 2rem;">
-        <h1>Contact</h1>
-      </div>
-      <div class="contact-inner">
-        <div class="contact-layout">
-          <div class="contact-form-panel">
-            <form action="#" method="post">
-              <div class="form-grid">
-                <input class="tm-field" type="text" name="name" placeholder="Naam">
-                <input class="tm-field" type="text" name="phone" placeholder="Telefoon">
-                <input class="tm-field" type="email" name="email" placeholder="E-mail">
-                <textarea class="tm-field" name="message" placeholder="Bericht"></textarea>
-                <button class="submit-btn" type="submit">Verzenden</button>
-              </div>
-            </form>
-            <div class="form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
-          </div>
-          <div class="contact-copy">
-            <div class="text-content">
-              <?php
-              $filePath = 'contact.txt';
-              if (file_exists($filePath)) {
-                echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-              } else {
-                echo '-';
-              }
-              ?>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  <footer class="footer">
-    <div class="footer-inner">
-      <p>Auteursrecht &copy; <?php echo date('Y'); ?> ZZpzo</p>
-      <div class="footer-links">
-        <a href="terms.php">Algemene voorwaarden</a>
-        <a href="complain.php">Klachtenportaal</a>
-        <a href="privacy.php">Privacybeleid</a>
-      </div>
-    </div>
-  </footer>
-  <script src="js/main.js?id=<?php echo filemtime('js/main.js'); ?>"></script>
-</body>
-
-</html>
+<header class="site-header"><div class="nav-shell"><a href="index.php" class="navbar-brand" id="brandLogo"><img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();"></a><button class="nav-toggle" type="button" aria-label="Menu openen/sluiten" aria-expanded="false">&#9776;</button><nav class="nav-menu"><ul><li><a href="index.php">Startpagina</a></li><li><a href="about.php">Over ons</a></li><li><a href="service.php">Diensten</a></li><li><a href="contact.php" class="active">Contact</a></li></ul></nav></div></header>
+<main>
+<?php $defaultBanner="img/bg-img-06.jpg";$bannerFile="contactimage.txt";if(file_exists($bannerFile)){$bannerUrl=trim(file_get_contents($bannerFile));if($bannerUrl===""){$bannerUrl=$defaultBanner;}}else{$bannerUrl=$defaultBanner;} ?>
+<section class="hero-short" style="background-image:url('<?php echo htmlspecialchars($bannerUrl); ?>');"><div class="hero-inner" style="margin-bottom:2rem;"><h1>Contact</h1></div><div class="contact-inner"><div class="contact-layout">
+  <div class="contact-form-panel">
+    <?php if($formSuccess!==''): ?><div id="form-feedback" class="zz-form-feedback zz-form-feedback-success" role="status" aria-live="polite"><?php echo htmlspecialchars($formSuccess); ?></div><?php endif; ?>
+    <?php if($formError!==''): ?><div id="form-feedback" class="zz-form-feedback zz-form-feedback-error" role="alert"><?php echo htmlspecialchars($formError); ?></div><?php endif; ?>
+    <form action="" method="post"><div class="form-grid"><input class="tm-field" type="text" name="name" placeholder="Naam" value="<?php echo htmlspecialchars($formName,ENT_QUOTES,'UTF-8'); ?>" maxlength="150" autocomplete="name" required><input class="tm-field" type="text" name="phone" placeholder="Telefoon" value="<?php echo htmlspecialchars($formPhone,ENT_QUOTES,'UTF-8'); ?>" maxlength="50" autocomplete="tel"><input class="tm-field" type="email" name="email" placeholder="E-mail" value="<?php echo htmlspecialchars($formEmail,ENT_QUOTES,'UTF-8'); ?>" maxlength="254" autocomplete="email" required><textarea class="tm-field" name="message" placeholder="Bericht" maxlength="5000" required><?php echo htmlspecialchars($formMessage); ?></textarea><button class="submit-btn" type="submit">Verzenden</button></div></form>
+    <div class="form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
+  </div>
+  <div class="contact-copy"><div class="text-content"><?php $filePath='contact.txt';if(file_exists($filePath)){echo nl2br(htmlspecialchars(file_get_contents($filePath)));}else{echo '-';} ?></div></div>
+</div></div></section>
+</main>
+<footer class="footer"><div class="footer-inner"><p>Auteursrecht &copy; <?php echo date('Y'); ?> ZZpzo</p><div class="footer-links"><a href="terms.php">Algemene voorwaarden</a><a href="complain.php">Klachtenportaal</a><a href="privacy.php">Privacybeleid</a></div></div></footer>
+<script src="js/main.js?id=<?php echo filemtime('js/main.js'); ?>"></script><script>(function(){window.addEventListener('load',function(){var f=document.getElementById('form-feedback');if(f){setTimeout(function(){f.scrollIntoView({behavior:'smooth',block:'center'});},180);}});})();</script>
+</body></html>
