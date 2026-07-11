@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="assets/css/style.css?id=<?php echo filemtime('assets/css/style.css'); ?>">
   <link rel="stylesheet"
     href="assets/css/dynamic-template.css?id=<?php echo filemtime('assets/css/dynamic-template.css'); ?>">
+  <link rel="stylesheet"
+    href="assets/css/zz-form-visual-fix.css?id=<?php echo filemtime('assets/css/zz-form-visual-fix.css'); ?>">
 </head>
 
 <body>
