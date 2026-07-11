@@ -35,6 +35,7 @@
     </header>
     <main class="page-main dynamic-fullwidth-main dynamic-no-hero">
       <section class="content-panel dynamic-content-panel">
+        <h2 class="dynamic-page-title">Privacybeleid</h2>
         <div class="dynamic-txt-content">
           <?php
           $filePath = 'privacy.txt';
