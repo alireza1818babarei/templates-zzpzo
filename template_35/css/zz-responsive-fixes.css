@@ -1,0 +1,72 @@
+/* Template 35 footer spacing and form text-height fixes. */
+@media (min-width: 768px) {
+  .zz-form-row {
+    align-items: stretch !important;
+  }
+
+  .zz-form-row > .tm-login-l,
+  .zz-form-row > .tm-login-r {
+    display: flex;
+  }
+
+  .zz-standard-form,
+  .zz-form-copy {
+    width: 100%;
+  }
+
+  .zz-form-copy {
+    display: flex;
+    flex-direction: column;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .zz-form-copy .zz-dynamic-text {
+    flex: 1 1 auto;
+    min-height: 0;
+    max-width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: 767px) {
+  .zz-form-copy {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .zz-form-copy .zz-dynamic-text {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    margin-bottom: 0;
+    padding-right: 0;
+  }
+
+  .zz-footer-inner {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    row-gap: 12px;
+    width: min(calc(100% - 28px), 520px) !important;
+    margin: 0 auto;
+    padding-top: 18px !important;
+    padding-bottom: 18px !important;
+    text-align: center;
+  }
+
+  .zz-footer-inner span,
+  .zz-footer-inner a {
+    display: block;
+    margin: 0 !important;
+  }
+
+  .zz-footer-inner a {
+    padding: 6px 4px;
+    line-height: 1.5;
+  }
+}
