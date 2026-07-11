@@ -100,7 +100,7 @@ http://www.templatemo.com/tm-492-app-starter
   ?>
 
 
-  <section id="home" class="main" style="background: #535bd4 url('<?= htmlspecialchars($bannerUrl) ?>') no-repeat;">
+  <section id="home" class="main" style="background-image: url('<?= htmlspecialchars($bannerUrl) ?>');">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
