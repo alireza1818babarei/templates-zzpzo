@@ -12,14 +12,14 @@ if (file_exists($filePath)) {
 }
 ?> - Services</title>
   <meta name="description" content="">
-  <link rel="stylesheet" href="assets/css/style.css?v=20260703-fix2">
-  <link rel="stylesheet" href="assets/css/dynamic-template.css?v=20260703-fix1">
+  <link rel="stylesheet" href="assets/css/style.css?id=<?php echo filemtime('assets/css/style.css'); ?>">
+  <link rel="stylesheet" href="assets/css/dynamic-template.css?id=<?php echo filemtime('assets/css/dynamic-template.css'); ?>">
 </head>
 <body>
 <a class="skip-link" href="#content">Skip to content</a><header class="header-wrap site-shell">
   <nav class="nav-frame" aria-label="Primary navigation">
     <a class="brand" href="index.php" id="brandLogo">
-  <img src="logo.png" alt="Logo" onerror="this.remove();">
+  <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();">
 </a>
     <button class="menu-toggle" type="button" aria-expanded="false" data-menu-toggle>Menu</button>
     <div class="nav-links" data-nav-links>
@@ -74,6 +74,6 @@ if (file_exists($heroImageFile)) {
     </div>
   </div>
 </footer>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js?id=<?php echo filemtime('assets/js/main.js'); ?>"></script>
 </body>
 </html>
