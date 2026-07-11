@@ -4,6 +4,7 @@
 .content-panel.dynamic-content-panel,
 .bubble.dynamic-content-panel,
 .content-card.dynamic-content-panel{width:100% !important;max-width:none !important;margin-left:0 !important;margin-right:0 !important;box-sizing:border-box !important;display:block !important;grid-template-columns:1fr !important;}
+.dynamic-page-title{margin:0 0 24px;line-height:1.25;overflow-wrap:anywhere;}
 .dynamic-txt-content{width:100% !important;max-width:none !important;min-height:260px;white-space:normal;text-align:justify;line-height:1.8;box-sizing:border-box;}
 .dynamic-form-text{min-height:120px;margin-bottom:22px;}
 .dynamic-form-panel{display:block !important;}
@@ -24,3 +25,11 @@ html,body{max-width:100%;overflow-x:hidden;}
 .dynamic-txt-content *,.dynamic-form-panel *{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:break-word;}
 .dynamic-txt-content img,.dynamic-txt-content video,.dynamic-txt-content iframe{max-width:100%;height:auto;}
 .dynamic-txt-content table,.dynamic-txt-content pre{display:block;max-width:100%;overflow-x:auto;white-space:pre-wrap;}
+
+@media (max-width: 900px){
+  .site-footer{display:grid !important;grid-template-columns:1fr;gap:14px;padding-left:20px;padding-right:20px;text-align:center;}
+  .site-footer > div{width:100%;min-width:0;}
+  .site-footer > div:first-child p{margin:0;}
+  .site-footer > div:last-child{display:grid;grid-template-columns:1fr;gap:10px;width:min(100%,360px);margin:0 auto;}
+  .site-footer > div:last-child a{display:block;margin:0 !important;padding:8px 10px;line-height:1.4;text-align:center;overflow-wrap:anywhere;}
+}
