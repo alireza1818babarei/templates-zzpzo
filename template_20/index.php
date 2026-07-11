@@ -20,6 +20,7 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@200;300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="tooplate-ivory-style.css?id=<?php echo filemtime('tooplate-ivory-style.css'); ?>">
+  <link rel="stylesheet" href="zz-mobile-hero-gap-fix.css?id=<?php echo filemtime('zz-mobile-hero-gap-fix.css'); ?>">
 </head>
 
 <body>
