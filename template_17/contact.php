@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       'message' => $formMessage
     ];
 
-    $curl = curl_init('https://zzpzo.net/insertuserscontactform');
+    $curl = curl_init('https://zzpzo.net/api/v1/insertuserscontactform');
 
     curl_setopt_array($curl, [
       CURLOPT_POST => true,
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     curl_close($curl);
 
     if ($curlError === '' && $httpCode >= 200 && $httpCode < 300) {
-      header('Location: contact.php?sent=1');
+      header('Location: contact.php?sent=1#form-feedback');
       exit;
     }
 
@@ -156,13 +156,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-sm-4 mb-md-0 mb-4">
                 <?php if ($formSuccess !== ''): ?>
-                  <div class="zz-form-feedback zz-form-feedback-success" role="status" aria-live="polite">
+                  <div id="form-feedback" class="zz-form-feedback zz-form-feedback-success" role="status" aria-live="polite">
                     <?php echo htmlspecialchars($formSuccess); ?>
                   </div>
                 <?php endif; ?>
 
                 <?php if ($formError !== ''): ?>
-                  <div class="zz-form-feedback zz-form-feedback-error" role="alert">
+                  <div id="form-feedback" class="zz-form-feedback zz-form-feedback-error" role="alert">
                     <?php echo htmlspecialchars($formError); ?>
                   </div>
                 <?php endif; ?>
