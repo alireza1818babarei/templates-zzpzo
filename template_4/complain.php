@@ -1,3 +1,73 @@
+<?php
+$formSuccess = '';
+$formError = '';
+$formName = '';
+$formPhone = '';
+$formEmail = '';
+$formMessage = '';
+
+if (isset($_GET['sent']) && $_GET['sent'] === '1') {
+    $formSuccess = 'Uw klacht is succesvol verzonden.';
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $formName = isset($_POST['name']) ? trim($_POST['name']) : '';
+    $formPhone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
+    $formEmail = isset($_POST['email']) ? trim($_POST['email']) : '';
+    $formMessage = isset($_POST['message']) ? trim($_POST['message']) : '';
+
+    if ($formName === '' || $formEmail === '' || $formMessage === '') {
+        $formError = 'Vul alle verplichte velden in.';
+    } elseif (!filter_var($formEmail, FILTER_VALIDATE_EMAIL)) {
+        $formError = 'Vul een geldig e-mailadres in.';
+    } elseif (!function_exists('curl_init')) {
+        $formError = 'De klacht kon niet worden verzonden. Probeer het later opnieuw.';
+        error_log('Complaint API error: cURL is not available.');
+    } else {
+        $domain = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
+
+        if ($domain === '' && isset($_SERVER['HTTP_HOST'])) {
+            $domain = $_SERVER['HTTP_HOST'];
+        }
+
+        $domain = preg_replace('/:\d+$/', '', $domain);
+
+        $payload = [
+            'domain' => $domain,
+            'page' => 'complain',
+            'name' => $formName,
+            'phone' => $formPhone,
+            'email' => $formEmail,
+            'message' => $formMessage
+        ];
+
+        $curl = curl_init('https://zzpzo.net/api/v1/insertuserscontactform');
+
+        curl_setopt_array($curl, [
+            CURLOPT_POST => true,
+            CURLOPT_POSTFIELDS => http_build_query($payload),
+            CURLOPT_HTTPHEADER => ['Content-Type: application/x-www-form-urlencoded'],
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_CONNECTTIMEOUT => 5,
+            CURLOPT_TIMEOUT => 15
+        ]);
+
+        $apiResponse = curl_exec($curl);
+        $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $curlError = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($curlError === '' && $httpCode >= 200 && $httpCode < 300) {
+            header('Location: complain.php?sent=1#slide02');
+            exit;
+        }
+
+        $formError = 'De klacht kon niet worden verzonden. Probeer het later opnieuw.';
+        error_log('Complaint API error. HTTP: ' . $httpCode . ' Curl: ' . $curlError . ' Response: ' . $apiResponse);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -31,8 +101,7 @@
 
     <link rel="stylesheet" href="css/responsive.css?id=<?php echo filemtime('css/responsive.css'); ?>">
 
-
-
+    <link rel="stylesheet" href="css/zz-form-feedback.css?id=<?php echo filemtime('css/zz-form-feedback.css'); ?>">
 
 <style type="text/css">
 
@@ -50,7 +119,7 @@
 </style>
     </head>
 
-    <body>
+    <body class="zz-form-page">
 
     <div id="video">
         <div class="preloader">
@@ -132,7 +201,8 @@ if (file_exists($bannerFile)) {
                                     <div class="col-md-12">
                                         <div class="about-contentbox">
                                             <div class="animate" data-animate="fadeInUp">
-                                                              <?php
+                                                <div class="zz-dynamic-content">
+                                                  <?php
         $filePath = 'complain.txt';
         if (file_exists($filePath)) {
             echo nl2br(htmlspecialchars(file_get_contents($filePath)));
@@ -140,19 +210,30 @@ if (file_exists($bannerFile)) {
             echo '-';
         }
     ?>
+                                                </div>
 
-     <div class="container py-5">
+     <div class="container py-5 zz-form-area">
     <div class="row justify-content-center">
         <div class="col-lg-10 col-xl-8">
 
-            <!-- Title -->
             <p class="text-center mb-4">
                 Dien uw klacht in
             </p>
 
-            <form action="#" method="post">
+            <?php if ($formSuccess !== ''): ?>
+                <div id="form-feedback" class="zz-form-feedback zz-form-feedback-success" role="status" aria-live="polite">
+                    <?php echo htmlspecialchars($formSuccess); ?>
+                </div>
+            <?php endif; ?>
 
-                <!-- Row 1 -->
+            <?php if ($formError !== ''): ?>
+                <div id="form-feedback" class="zz-form-feedback zz-form-feedback-error" role="alert">
+                    <?php echo htmlspecialchars($formError); ?>
+                </div>
+            <?php endif; ?>
+
+            <form action="" method="post">
+
                 <div class="row g-3 mb-3">
                     <div class="col-md-4" style="margin-bottom: 20px;">
                         <input
@@ -160,6 +241,9 @@ if (file_exists($bannerFile)) {
                             name="name"
                             class="form-control"
                             placeholder="Naam"
+                            value="<?php echo htmlspecialchars($formName, ENT_QUOTES, 'UTF-8'); ?>"
+                            maxlength="150"
+                            autocomplete="name"
                             required
                         >
                     </div>
@@ -170,6 +254,9 @@ if (file_exists($bannerFile)) {
                             name="email"
                             class="form-control"
                             placeholder="E-mail"
+                            value="<?php echo htmlspecialchars($formEmail, ENT_QUOTES, 'UTF-8'); ?>"
+                            maxlength="254"
+                            autocomplete="email"
                             required
                         >
                     </div>
@@ -180,27 +267,28 @@ if (file_exists($bannerFile)) {
                             name="phone"
                             class="form-control"
                             placeholder="Telefoon"
+                            value="<?php echo htmlspecialchars($formPhone, ENT_QUOTES, 'UTF-8'); ?>"
+                            maxlength="50"
+                            autocomplete="tel"
                         >
                     </div>
                 </div>
 
-                <!-- Message -->
                 <div class="mb-3" style="margin-bottom: 20px;">
                     <textarea
                         name="message"
                         rows="3"
                         class="form-control"
                         placeholder="Bericht"
+                        maxlength="5000"
                         required
-                    ></textarea>
+                    ><?php echo htmlspecialchars($formMessage); ?></textarea>
                 </div>
 
-                <!-- reCAPTCHA text -->
                 <p class="small text-muted mb-4">
                     Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php" class="text-decoration-none">privacybeleid</a> en de <a href="terms.php" class="text-decoration-none">algemene voorwaarden</a> van Google zijn van toepassing.
                 </p>
 
-                <!-- Submit -->
                 <div class="text-end" style="margin-bottom: 20px;">
                     <button type="submit" class="btn btn-outline-secondary px-4">
                         Verzenden
@@ -227,24 +315,22 @@ if (file_exists($bannerFile)) {
                 <style type="text/css">
 .footer-wrapper {
   display: flex;
-  justify-content: center;     /* کل فوتر وسط صفحه */
+  justify-content: center;
 }
 
 .footer-links {
   margin-top: 200px;
   width: 100%;
-  max-width: 1100px;           /* مرکز تصویر/صفحه */
+  max-width: 1100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* لینک‌ها */
 .footer-left a {
   margin-right: 10px;
 }
 
-/* ---------- موبایل ---------- */
 @media (max-width: 767px) {
   .footer-links {
     flex-direction: column;
@@ -309,6 +395,8 @@ if (file_exists($bannerFile)) {
     <script src="js/form.js?id=<?php echo filemtime('js/form.js'); ?>"></script>
 
     <script src="js/custom.js?id=<?php echo filemtime('js/custom.js'); ?>"></script>
+
+    <script src="js/zz-form-feedback.js?id=<?php echo filemtime('js/zz-form-feedback.js'); ?>"></script>
 
 
   </body>
