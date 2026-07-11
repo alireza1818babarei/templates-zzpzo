@@ -137,6 +137,7 @@
   </footer>
   <script src="js/jquery-1.9.1.min.js?id=<?php echo filemtime('js/jquery-1.9.1.min.js'); ?>"></script>
   <script src="js/bootstrap.min.js?id=<?php echo filemtime('js/bootstrap.min.js'); ?>"></script>
+  <script src="js/zz-form-height.js?id=<?php echo filemtime('js/zz-form-height.js'); ?>"></script>
 </body>
 
 </html>
