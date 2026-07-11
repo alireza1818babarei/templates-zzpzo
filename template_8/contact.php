@@ -195,7 +195,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 						<ul class="actions">
 							<li><input type="submit" value="Bericht verzenden" /></li>
-							<li><input type="reset" value="Wissen" /></li>
 						</ul>
 					</form>
 				</section>

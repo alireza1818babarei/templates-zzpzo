@@ -198,7 +198,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 								<ul class="actions">
 									<li><input type="submit" value="Klacht indienen" class="primary" /></li>
-									<li><input type="reset" value="Wissen" /></li>
 								</ul>
 							</form>
 						</section>
