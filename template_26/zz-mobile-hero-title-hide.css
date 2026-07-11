@@ -1,3 +1,14 @@
+/* Keep the responsive header in the document flow so it does not cover the hero image. */
+@media (max-width: 1100px) {
+  .site-header {
+    position: sticky !important;
+    top: 0;
+    left: auto;
+    right: auto;
+    width: 100%;
+  }
+}
+
 /* Hide the separate hero title panel on mobile while keeping the hero image visible. */
 @media (max-width: 860px) {
   .zz-hero {
