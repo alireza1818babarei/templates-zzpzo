@@ -1,0 +1,22 @@
+/* Hide the separate hero title panel on mobile while keeping the hero image visible. */
+@media (max-width: 860px) {
+  .zz-hero {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+
+  .zz-hero .hero-content {
+    display: none !important;
+  }
+
+  .zz-hero .hero-image {
+    height: 48vh;
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 576px) {
+  .zz-hero .hero-image {
+    min-height: 300px;
+  }
+}
