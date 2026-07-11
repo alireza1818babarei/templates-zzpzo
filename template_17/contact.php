@@ -1,3 +1,73 @@
+<?php
+$formSuccess = '';
+$formError = '';
+$formName = '';
+$formPhone = '';
+$formEmail = '';
+$formMessage = '';
+
+if (isset($_GET['sent']) && $_GET['sent'] === '1') {
+  $formSuccess = 'Uw bericht is succesvol verzonden.';
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $formName = isset($_POST['name']) ? trim($_POST['name']) : '';
+  $formPhone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
+  $formEmail = isset($_POST['email']) ? trim($_POST['email']) : '';
+  $formMessage = isset($_POST['message']) ? trim($_POST['message']) : '';
+
+  if ($formName === '' || $formEmail === '' || $formMessage === '') {
+    $formError = 'Vul alle verplichte velden in.';
+  } elseif (!filter_var($formEmail, FILTER_VALIDATE_EMAIL)) {
+    $formError = 'Vul een geldig e-mailadres in.';
+  } elseif (!function_exists('curl_init')) {
+    $formError = 'Het bericht kon niet worden verzonden. Probeer het later opnieuw.';
+    error_log('Contact API error: cURL is not available.');
+  } else {
+    $domain = isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '';
+
+    if ($domain === '' && isset($_SERVER['HTTP_HOST'])) {
+      $domain = $_SERVER['HTTP_HOST'];
+    }
+
+    $domain = preg_replace('/:\d+$/', '', $domain);
+
+    $payload = [
+      'domain' => $domain,
+      'page' => 'contact',
+      'name' => $formName,
+      'phone' => $formPhone,
+      'email' => $formEmail,
+      'message' => $formMessage
+    ];
+
+    $curl = curl_init('https://zzpzo.net/insertuserscontactform');
+
+    curl_setopt_array($curl, [
+      CURLOPT_POST => true,
+      CURLOPT_POSTFIELDS => http_build_query($payload),
+      CURLOPT_HTTPHEADER => ['Content-Type: application/x-www-form-urlencoded'],
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_CONNECTTIMEOUT => 5,
+      CURLOPT_TIMEOUT => 15
+    ]);
+
+    $apiResponse = curl_exec($curl);
+    $httpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+    $curlError = curl_error($curl);
+
+    curl_close($curl);
+
+    if ($curlError === '' && $httpCode >= 200 && $httpCode < 300) {
+      header('Location: contact.php?sent=1');
+      exit;
+    }
+
+    $formError = 'Het bericht kon niet worden verzonden. Probeer het later opnieuw.';
+    error_log('Contact API error. HTTP: ' . $httpCode . ' Curl: ' . $curlError . ' Response: ' . $apiResponse);
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="nl">
 
@@ -18,6 +88,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>">
   <link rel="stylesheet" href="css/fontawesome-all.min.css?id=<?php echo filemtime('css/fontawesome-all.min.css'); ?>">
   <link rel="stylesheet" href="css/tooplate-style.css?id=<?php echo filemtime('css/tooplate-style.css'); ?>">
+  <link rel="stylesheet" href="css/zz-form-feedback.css?id=<?php echo filemtime('css/zz-form-feedback.css'); ?>">
 </head>
 
 <body>
@@ -84,14 +155,29 @@
                 </div>
               </div>
               <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-sm-4 mb-md-0 mb-4">
-                <form action="#" method="POST">
-                  <div class="form-group"><input type="text" name="name" class="form-control" placeholder="Naam"></div>
-                  <div class="form-group"><input type="text" name="phone" class="form-control" placeholder="Telefoon">
+                <?php if ($formSuccess !== ''): ?>
+                  <div class="zz-form-feedback zz-form-feedback-success" role="status" aria-live="polite">
+                    <?php echo htmlspecialchars($formSuccess); ?>
                   </div>
-                  <div class="form-group"><input type="email" name="email" class="form-control" placeholder="E-mail">
+                <?php endif; ?>
+
+                <?php if ($formError !== ''): ?>
+                  <div class="zz-form-feedback zz-form-feedback-error" role="alert">
+                    <?php echo htmlspecialchars($formError); ?>
+                  </div>
+                <?php endif; ?>
+
+                <form action="" method="POST">
+                  <div class="form-group"><input type="text" name="name" class="form-control" placeholder="Naam"
+                      value="<?php echo htmlspecialchars($formName, ENT_QUOTES, 'UTF-8'); ?>" maxlength="150" autocomplete="name" required></div>
+                  <div class="form-group"><input type="text" name="phone" class="form-control" placeholder="Telefoon"
+                      value="<?php echo htmlspecialchars($formPhone, ENT_QUOTES, 'UTF-8'); ?>" maxlength="50" autocomplete="tel">
+                  </div>
+                  <div class="form-group"><input type="email" name="email" class="form-control" placeholder="E-mail"
+                      value="<?php echo htmlspecialchars($formEmail, ENT_QUOTES, 'UTF-8'); ?>" maxlength="254" autocomplete="email" required>
                   </div>
                   <div class="form-group tm-mb-20"><textarea rows="5" name="message" class="form-control"
-                      placeholder="Bericht"></textarea></div>
+                      placeholder="Bericht" maxlength="5000" required><?php echo htmlspecialchars($formMessage); ?></textarea></div>
                   <div class="form-group"><button type="submit" class="btn btn-primary tm-btn-send">Verzenden</button>
                   </div>
                 </form>
