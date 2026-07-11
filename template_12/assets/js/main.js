@@ -147,15 +147,15 @@
 							leave:		function() { $(this).addClass('inactive'); }
 						});
 
-				// Contact.
+				// Contact. Trigger from the section top, not from half of its dynamic height.
 					$('#contact')
 						.scrollex({
-							top:		'50%',
-							delay:		50,
+							top:		0,
+							delay:		20,
 							initialize:	function() { $(this).addClass('inactive'); },
 							terminate:	function() { $(this).removeClass('inactive'); },
 							enter:		function() { $(this).removeClass('inactive'); },
-							leave:		function() { $(this).addClass('inactive'); }
+							leave:		function() {}
 						});
 
 			};
