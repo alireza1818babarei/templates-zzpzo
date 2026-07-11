@@ -17,6 +17,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>">
   <link rel="stylesheet" href="css/tooplate-style.css?id=<?php echo filemtime('css/tooplate-style.css'); ?>">
+  <link rel="stylesheet" href="css/zz-mobile-content-order.css?id=<?php echo filemtime('css/zz-mobile-content-order.css'); ?>">
 </head>
 
 <body>
