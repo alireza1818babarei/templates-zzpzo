@@ -4,6 +4,7 @@
 .content-panel.dynamic-content-panel,
 .bubble.dynamic-content-panel,
 .content-card.dynamic-content-panel{width:100% !important;max-width:none !important;margin-left:0 !important;margin-right:0 !important;box-sizing:border-box !important;display:block !important;grid-template-columns:1fr !important;}
+.dynamic-page-title{margin:0 0 24px;line-height:1.25;overflow-wrap:anywhere;}
 .dynamic-txt-content{width:100% !important;max-width:none !important;min-height:260px;white-space:normal;text-align:justify;line-height:1.8;box-sizing:border-box;}
 .dynamic-form-text{min-height:120px;margin-bottom:22px;}
 .dynamic-form-panel{display:block !important;}
