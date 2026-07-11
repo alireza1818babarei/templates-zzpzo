@@ -80,7 +80,7 @@
 }
 
 /* Keep footer and mobile-menu links tidy without splitting words. */
-@media (max-width: 859px) {
+@media (max-width: 900px) {
   .zz-footer-bottom {
     flex-direction: column;
     align-items: center;
