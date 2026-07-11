@@ -80,6 +80,36 @@
 						}
 						?>
 							</p>
+
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field half">
+										<label for="name">Naam</label>
+										<input type="text" name="name" id="name" autocomplete="name" required />
+									</div>
+									<div class="field half">
+										<label for="email">E-mail</label>
+										<input type="email" name="email" id="email" autocomplete="email" required />
+									</div>
+									<div class="field">
+										<label for="phone">Telefoon</label>
+										<input type="text" name="phone" id="phone" inputmode="tel" autocomplete="tel" />
+									</div>
+									<div class="field">
+										<label for="message">Bericht</label>
+										<textarea name="message" id="message" rows="6" required></textarea>
+									</div>
+								</div>
+
+								<p>
+									Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.
+								</p>
+
+								<ul class="actions">
+									<li><input type="submit" value="Klacht verzenden" class="primary" /></li>
+									<li><input type="reset" value="Herstellen" /></li>
+								</ul>
+							</form>
 						</article>
 
 					</div>
