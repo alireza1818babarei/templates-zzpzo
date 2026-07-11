@@ -1,95 +1,21 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?php
-$filePath = 'title.txt';
-if (file_exists($filePath)) {
-    echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-} else {
-    echo 'Titel';
-}
-?> - Klachtenportaal</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="templatemo-split-style.css?id=<?php echo filemtime('templatemo-split-style.css'); ?>">
-<link rel="stylesheet" href="zz-mobile-layout.css?id=<?php echo filemtime('zz-mobile-layout.css'); ?>">
-</head>
-<body>
-<!-- Site Header -->
-<header class="site-header">
-  <div class="site-brand">
-    <a href="index.php" class="navbar-brand" id="brandLogo">
-        <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();">
-</a>
-  </div>
-  <button class="site-menu-toggle" type="button" aria-label="Menu openen" aria-expanded="false" aria-controls="siteHeaderNav">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  <nav class="site-header-nav" id="siteHeaderNav">
-    <a href="index.php">Startpagina</a>
-    <a href="about.php">Over ons</a>
-    <a href="service.php">Diensten</a>
-    <a href="contact.php">Contact</a>
-  </nav>
-</header>
-
-<!-- Main Content -->
-<div class="split-container split-container-standard">
-  <div class="left-side left-side-standard">
-    <div class="panel panel-active">
-      <div class="standard-content">
-        <span class="about-label">Klachtenportaal</span>
-        <div class="content-body">
 <?php
-$filePath = 'complain.txt';
-if (file_exists($filePath)) {
-    echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-} else {
-    echo '-';
+$formSuccess='';$formError='';$formName='';$formPhone='';$formEmail='';$formMessage='';
+if(isset($_GET['sent'])&&$_GET['sent']==='1'){$formSuccess='Uw klacht is succesvol verzonden.';}
+if($_SERVER['REQUEST_METHOD']==='POST'){
+  $formName=isset($_POST['name'])?trim($_POST['name']):'';$formPhone=isset($_POST['phone'])?trim($_POST['phone']):'';$formEmail=isset($_POST['email'])?trim($_POST['email']):'';$formMessage=isset($_POST['message'])?trim($_POST['message']):'';
+  if($formName===''||$formEmail===''||$formMessage===''){$formError='Vul alle verplichte velden in.';}elseif(!filter_var($formEmail,FILTER_VALIDATE_EMAIL)){$formError='Vul een geldig e-mailadres in.';}elseif(!function_exists('curl_init')){$formError='De klacht kon niet worden verzonden. Probeer het later opnieuw.';error_log('Complaint API error: cURL is not available.');}else{
+    $domain=isset($_SERVER['SERVER_NAME'])?$_SERVER['SERVER_NAME']:'';if($domain===''&&isset($_SERVER['HTTP_HOST'])){$domain=$_SERVER['HTTP_HOST'];}$domain=preg_replace('/:\d+$/','',$domain);
+    $payload=['domain'=>$domain,'page'=>'complain','name'=>$formName,'phone'=>$formPhone,'email'=>$formEmail,'message'=>$formMessage];
+    $curl=curl_init('https://zzpzo.net/api/v1/insertuserscontactform');curl_setopt_array($curl,[CURLOPT_POST=>true,CURLOPT_POSTFIELDS=>http_build_query($payload),CURLOPT_HTTPHEADER=>['Content-Type: application/x-www-form-urlencoded'],CURLOPT_RETURNTRANSFER=>true,CURLOPT_CONNECTTIMEOUT=>5,CURLOPT_TIMEOUT=>15]);
+    $apiResponse=curl_exec($curl);$httpCode=curl_getinfo($curl,CURLINFO_HTTP_CODE);$curlError=curl_error($curl);curl_close($curl);
+    if($curlError===''&&$httpCode>=200&&$httpCode<300){header('Location: complain.php?sent=1#form-feedback');exit;}
+    $formError='De klacht kon niet worden verzonden. Probeer het later opnieuw.';error_log('Complaint API error. HTTP: '.$httpCode.' Curl: '.$curlError.' Response: '.$apiResponse);
+  }
 }
 ?>
-        </div>
-        <form class="contact-form" method="post" action="#">
-          <div class="form-group">
-            <label for="name">Naam</label>
-            <input type="text" id="name" name="name" placeholder="Uw volledige naam">
-          </div>
-          <div class="form-group">
-            <label for="phone">Telefoon</label>
-            <input type="text" id="phone" name="phone" placeholder="Uw telefoonnummer">
-          </div>
-          <div class="form-group">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="hello@example.com">
-          </div>
-          <div class="form-group">
-            <label for="message">Bericht</label>
-            <textarea id="message" name="message" placeholder="Vertel ons over uw project..."></textarea>
-          </div>
-          <button type="submit" class="form-submit">Verzenden</button>
-        </form>
-        <p class="recaptcha-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</p>
-
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Site Footer -->
-<footer class="site-footer">
-  <p>Auteursrecht &copy; <?php echo date('Y'); ?> ZZpzo</p>
-  <div class="footer-links">
-    <a href="terms.php">Algemene voorwaarden</a>
-    <span class="footer-dot">&middot;</span>
-    <a href="complain.php">Klachtenportaal</a>
-    <span class="footer-dot">&middot;</span>
-    <a href="privacy.php">Privacybeleid</a>
-  </div>
-</footer>
-<script src="templatemo-split-index.js?id=<?php echo filemtime('templatemo-split-index.js'); ?>"></script>
-</body>
-</html>
+<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title><?php $filePath='title.txt';if(file_exists($filePath)){echo nl2br(htmlspecialchars(file_get_contents($filePath)));}else{echo 'Titel';} ?> - Klachtenportaal</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet"><link rel="stylesheet" href="templatemo-split-style.css?id=<?php echo filemtime('templatemo-split-style.css'); ?>"><link rel="stylesheet" href="zz-mobile-layout.css?id=<?php echo filemtime('zz-mobile-layout.css'); ?>"><style>.zz-form-feedback{margin:0 0 1.25rem;padding:.9rem 1rem;border:1px solid transparent;border-radius:8px;line-height:1.5;text-align:left;overflow-wrap:anywhere;scroll-margin-top:7rem}.zz-form-feedback-success{color:#155724;background:#d4edda;border-color:#c3e6cb}.zz-form-feedback-error{color:#721c24;background:#f8d7da;border-color:#f5c6cb}.content-body{max-width:100%;box-sizing:border-box;overflow-wrap:anywhere;word-break:break-word;overflow-x:hidden}@media(max-width:767px){.content-body,.standard-content,.left-side,.panel{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}.contact-form input,.contact-form textarea,.contact-form button{max-width:100%;box-sizing:border-box}}</style></head><body>
+<header class="site-header"><div class="site-brand"><a href="index.php" class="navbar-brand" id="brandLogo"><img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();"></a></div><button class="site-menu-toggle" type="button" aria-label="Menu openen" aria-expanded="false" aria-controls="siteHeaderNav"><span></span><span></span><span></span></button><nav class="site-header-nav" id="siteHeaderNav"><a href="index.php">Startpagina</a><a href="about.php">Over ons</a><a href="service.php">Diensten</a><a href="contact.php">Contact</a></nav></header>
+<div class="split-container split-container-standard"><div class="left-side left-side-standard"><div class="panel panel-active"><div class="standard-content"><span class="about-label">Klachtenportaal</span><div class="content-body"><?php $filePath='complain.txt';if(file_exists($filePath)){echo nl2br(htmlspecialchars(file_get_contents($filePath)));}else{echo '-';} ?></div>
+<?php if($formSuccess!==''): ?><div id="form-feedback" class="zz-form-feedback zz-form-feedback-success" role="status" aria-live="polite"><?php echo htmlspecialchars($formSuccess); ?></div><?php endif; ?><?php if($formError!==''): ?><div id="form-feedback" class="zz-form-feedback zz-form-feedback-error" role="alert"><?php echo htmlspecialchars($formError); ?></div><?php endif; ?>
+<form class="contact-form" method="post" action=""><div class="form-group"><label for="name">Naam</label><input type="text" id="name" name="name" placeholder="Uw volledige naam" value="<?php echo htmlspecialchars($formName,ENT_QUOTES,'UTF-8'); ?>" maxlength="150" autocomplete="name" required></div><div class="form-group"><label for="phone">Telefoon</label><input type="text" id="phone" name="phone" placeholder="Uw telefoonnummer" value="<?php echo htmlspecialchars($formPhone,ENT_QUOTES,'UTF-8'); ?>" maxlength="50" autocomplete="tel"></div><div class="form-group"><label for="email">E-mail</label><input type="email" id="email" name="email" placeholder="hello@example.com" value="<?php echo htmlspecialchars($formEmail,ENT_QUOTES,'UTF-8'); ?>" maxlength="254" autocomplete="email" required></div><div class="form-group"><label for="message">Bericht</label><textarea id="message" name="message" placeholder="Vertel ons over uw project..." maxlength="5000" required><?php echo htmlspecialchars($formMessage); ?></textarea></div><button type="submit" class="form-submit">Verzenden</button></form><p class="recaptcha-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</p></div></div></div></div>
+<footer class="site-footer"><p>Auteursrecht &copy; <?php echo date('Y'); ?> ZZpzo</p><div class="footer-links"><a href="terms.php">Algemene voorwaarden</a><span class="footer-dot">&middot;</span><a href="complain.php">Klachtenportaal</a><span class="footer-dot">&middot;</span><a href="privacy.php">Privacybeleid</a></div></footer><script src="templatemo-split-index.js?id=<?php echo filemtime('templatemo-split-index.js'); ?>"></script><script>(function(){window.addEventListener('load',function(){var f=document.getElementById('form-feedback');if(f){setTimeout(function(){f.scrollIntoView({behavior:'smooth',block:'center'});},220);}});})();</script></body></html>
