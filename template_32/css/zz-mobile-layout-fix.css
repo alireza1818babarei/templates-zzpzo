@@ -1,0 +1,98 @@
+/* Template 32 mobile footer and form ordering fixes. */
+@media (max-width: 991px) {
+  .zz-form-section {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .zz-form-section > .tm-contact-right {
+    order: 1;
+  }
+
+  .zz-form-section > .tm-contact-left {
+    order: 2;
+    margin-bottom: 0 !important;
+  }
+
+  .zz-contact-copy {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .zz-contact-form-container {
+    margin-bottom: 0 !important;
+  }
+
+  .tm-footer {
+    width: calc(100% - 30px);
+    max-width: 720px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 28px;
+  }
+
+  .zz-footer-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .zz-footer-row > p,
+  .zz-footer-links {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .zz-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 12px;
+    margin-top: 0;
+  }
+
+  .zz-footer-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 44px;
+    margin: 0 !important;
+    padding: 8px 14px;
+    border: 1px solid rgba(16, 138, 193, 0.22);
+    border-radius: 999px;
+    background: rgba(16, 138, 193, 0.04);
+    line-height: 1.35;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 520px) {
+  .tm-footer {
+    width: calc(100% - 24px);
+  }
+
+  .zz-footer-links {
+    flex-direction: column;
+    gap: 9px;
+    width: min(100%, 340px) !important;
+  }
+
+  .zz-footer-links a {
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 16px;
+  }
+}
