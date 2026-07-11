@@ -24,3 +24,69 @@ html,body{max-width:100%;overflow-x:hidden;}
 .dynamic-txt-content *,.dynamic-form-panel *{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:break-word;}
 .dynamic-txt-content img,.dynamic-txt-content video,.dynamic-txt-content iframe{max-width:100%;height:auto;}
 .dynamic-txt-content table,.dynamic-txt-content pre{display:block;max-width:100%;overflow-x:auto;white-space:pre-wrap;}
+
+/* Responsive footer links across sidebar and mobile breakpoints. */
+@media (max-width: 1100px) {
+  .site-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .site-footer > div:last-child {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px 12px;
+    width: 100%;
+  }
+
+  .site-footer > div:last-child a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 44px;
+    margin: 0;
+    padding: 8px 14px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 999px;
+    background: rgba(255,255,255,.05);
+    line-height: 1.3;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (max-width: 840px) {
+  .site-footer {
+    align-items: center;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .site-footer > div:first-child,
+  .site-footer > div:last-child {
+    width: 100%;
+  }
+
+  .site-footer > div:last-child {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-footer > div:last-child {
+    flex-direction: column;
+    gap: 9px;
+    width: min(100%,340px);
+  }
+
+  .site-footer > div:last-child a {
+    width: 100%;
+    min-height: 48px;
+    padding: 10px 16px;
+  }
+}
