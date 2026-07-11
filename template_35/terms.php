@@ -16,6 +16,7 @@ if (file_exists($filePath)) {
     <link rel="stylesheet" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="css/materialize.min.css?id=<?php echo filemtime('css/materialize.min.css'); ?>">
     <link rel="stylesheet" href="css/tooplate.css?id=<?php echo filemtime('css/tooplate.css'); ?>">
+    <link rel="stylesheet" href="css/zz-responsive-fixes.css?id=<?php echo filemtime('css/zz-responsive-fixes.css'); ?>">
 </head>
 
 <body class="zz-plain-page">
