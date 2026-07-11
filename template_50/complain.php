@@ -38,6 +38,7 @@
   <main id="content">
     <section class="section dynamic-fullwidth-section">
       <div class="site-shell">
+        <h2 class="dynamic-page-title">Klachtenportaal</h2>
         <aside class="form-note dynamic-form-note">
           <div class="dynamic-txt-content dynamic-form-text"><?php
           $filePath = 'complain.txt';
