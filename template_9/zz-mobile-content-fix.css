@@ -1,0 +1,17 @@
+@media (max-width: 768px) {
+  #content,
+  #content.section,
+  #content .feature,
+  #content .feature-content,
+  #content .section-body,
+  #content .zz-home-text-wrap {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  #content .feature {
+    align-items: start;
+  }
+}
