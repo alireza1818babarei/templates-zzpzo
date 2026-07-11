@@ -1,0 +1,62 @@
+.zz-form-feedback {
+  margin: 0 0 1.25rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  line-height: 1.5;
+  text-align: left;
+  overflow-wrap: anywhere;
+  scroll-margin-top: 6rem;
+}
+
+.zz-form-feedback-success {
+  color: #155724;
+  background: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.zz-form-feedback-error {
+  color: #721c24;
+  background: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.zz-form-page .zz-dynamic-content {
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  overflow-x: hidden;
+}
+
+.zz-form-page .zz-form-area .form-control,
+.zz-form-page .zz-form-area textarea,
+.zz-form-page .zz-form-area button {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 767px) {
+  .zz-form-page .zz-dynamic-content,
+  .zz-form-page .about-contentbox,
+  .zz-form-page .about-contentbox > .animate,
+  .zz-form-page .fp-scrollable,
+  .zz-form-page .fp-scroller {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .zz-form-page .fp-scroller {
+    transform: none !important;
+  }
+
+  .zz-form-page .iScrollVerticalScrollbar {
+    display: none !important;
+  }
+
+  .zz-form-page .zz-dynamic-content {
+    padding-right: 0 !important;
+  }
+}
