@@ -33,6 +33,7 @@ if (file_exists($imageFile)) {
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="templatemo-621-luminary-style.css?id=<?= $version ?>">
+<link rel="stylesheet" href="zz-mobile-content-fix.css?id=<?= filemtime('zz-mobile-content-fix.css') ?>">
 </head>
 <body>
 
