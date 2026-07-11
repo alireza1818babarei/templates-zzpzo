@@ -1,152 +1,34 @@
+<?php
+$formSuccess='';$formError='';$formName='';$formPhone='';$formEmail='';$formMessage='';
+if(isset($_GET['sent'])&&$_GET['sent']==='1'){$formSuccess='Uw bericht is succesvol verzonden.';}
+if($_SERVER['REQUEST_METHOD']==='POST'){
+  $formName=isset($_POST['name'])?trim($_POST['name']):'';$formPhone=isset($_POST['phone'])?trim($_POST['phone']):'';$formEmail=isset($_POST['email'])?trim($_POST['email']):'';$formMessage=isset($_POST['message'])?trim($_POST['message']):'';
+  if($formName===''||$formEmail===''||$formMessage===''){$formError='Vul alle verplichte velden in.';}elseif(!filter_var($formEmail,FILTER_VALIDATE_EMAIL)){$formError='Vul een geldig e-mailadres in.';}elseif(!function_exists('curl_init')){$formError='Het bericht kon niet worden verzonden. Probeer het later opnieuw.';error_log('Contact API error: cURL is not available.');}else{
+    $domain=isset($_SERVER['SERVER_NAME'])?$_SERVER['SERVER_NAME']:'';if($domain===''&&isset($_SERVER['HTTP_HOST'])){$domain=$_SERVER['HTTP_HOST'];}$domain=preg_replace('/:\d+$/','',$domain);
+    $payload=['domain'=>$domain,'page'=>'contact','name'=>$formName,'phone'=>$formPhone,'email'=>$formEmail,'message'=>$formMessage];
+    $curl=curl_init('https://zzpzo.net/api/v1/insertuserscontactform');curl_setopt_array($curl,[CURLOPT_POST=>true,CURLOPT_POSTFIELDS=>http_build_query($payload),CURLOPT_HTTPHEADER=>['Content-Type: application/x-www-form-urlencoded'],CURLOPT_RETURNTRANSFER=>true,CURLOPT_CONNECTTIMEOUT=>5,CURLOPT_TIMEOUT=>15]);
+    $apiResponse=curl_exec($curl);$httpCode=curl_getinfo($curl,CURLINFO_HTTP_CODE);$curlError=curl_error($curl);curl_close($curl);
+    if($curlError===''&&$httpCode>=200&&$httpCode<300){header('Location: contact.php?sent=1#form-feedback');exit;}
+    $formError='Het bericht kon niet worden verzonden. Probeer het later opnieuw.';error_log('Contact API error. HTTP: '.$httpCode.' Curl: '.$curlError.' Response: '.$apiResponse);
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-<meta charset="UTF-8">
-<title><?php
-$filePath = 'title.txt';
-if (file_exists($filePath)) {
-    echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-} else {
-    echo 'Titel';
-}
-?> - Contact</title>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<link rel="stylesheet" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>">
-<link rel="stylesheet" href="css/animate.css?id=<?php echo filemtime('css/animate.css'); ?>">
-<link rel="stylesheet" href="css/magnific-popup.css?id=<?php echo filemtime('css/magnific-popup.css'); ?>">
-<link rel="stylesheet" href="css/font-awesome.min.css?id=<?php echo filemtime('css/font-awesome.min.css'); ?>">
-<link rel="stylesheet" href="css/tooplate-style.css?id=<?php echo filemtime('css/tooplate-style.css'); ?>">
+<meta charset="UTF-8"><title><?php $filePath='title.txt';if(file_exists($filePath)){echo nl2br(htmlspecialchars(file_get_contents($filePath)));}else{echo 'Titel';} ?> - Contact</title><meta http-equiv="X-UA-Compatible" content="IE=Edge"><meta name="description" content=""><meta name="keywords" content=""><meta name="author" content=""><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>"><link rel="stylesheet" href="css/animate.css?id=<?php echo filemtime('css/animate.css'); ?>"><link rel="stylesheet" href="css/magnific-popup.css?id=<?php echo filemtime('css/magnific-popup.css'); ?>"><link rel="stylesheet" href="css/font-awesome.min.css?id=<?php echo filemtime('css/font-awesome.min.css'); ?>"><link rel="stylesheet" href="css/tooplate-style.css?id=<?php echo filemtime('css/tooplate-style.css'); ?>">
+<style>.zz-form-feedback{margin:0 0 1.25rem;padding:.9rem 1rem;border:1px solid transparent;border-radius:4px;line-height:1.5;text-align:left;overflow-wrap:anywhere;scroll-margin-top:7rem}.zz-form-feedback-success{color:#155724;background:#d4edda;border-color:#c3e6cb}.zz-form-feedback-error{color:#721c24;background:#f8d7da;border-color:#f5c6cb}.zz-dynamic-content{max-width:100%;box-sizing:border-box;overflow-wrap:anywhere;word-break:break-word;overflow-x:hidden}@media(max-width:767px){.zz-wide-card,.zz-dynamic-content{height:auto!important;min-height:0!important;max-height:none!important;overflow:visible!important}}</style>
 </head>
-<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
-<div class="preloader">
-     <div class="spinner">
-          <span class="spinner-rotate"></span>
-     </div>
-</div>
-
-<nav class="zz-navbar">
-  <div class="zz-nav-inner">
-    <a href="index.php" class="navbar-brand" id="brandLogo">
-        <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();">
-    </a>
-    <button type="button" class="zz-menu-toggle" aria-label="Menu"><i class="fa fa-bars"></i></button>
-    <div class="zz-main-menu-wrap">
-      <ul class="zz-main-menu">
-        <li><a class="" href="index.php">Startpagina</a></li>
-        <li><a class="" href="about.php">Over ons</a></li>
-        <li><a class="" href="service.php">Diensten</a></li>
-        <li><a class="active" href="contact.php">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<?php
-$defaultBanner = "images/home-bg.jpg";
-$bannerFile = "contactimage.txt";
-
-if (file_exists($bannerFile)) {
-    $bannerUrl = trim(file_get_contents($bannerFile));
-    if ($bannerUrl === "") {
-        $bannerUrl = $defaultBanner;
-    }
-} else {
-    $bannerUrl = $defaultBanner;
-}
-?>
-<div class="zz-hero-container">
-  <section class="parallax-section zz-hero-section" style="background-image: url('<?php echo htmlspecialchars($bannerUrl); ?>');">
-    <div class="col-md-offset-1 col-md-10 col-sm-12">
-      <div class="home-wrapper">
-        <h1 class="wow fadeInUp" data-wow-delay="0.4s">Contact</h1>
-        <a href="#dynamic-content-section" class="wow fadeInUp smoothScroll arrow-btn" data-wow-delay="0.8s"><i class="fa fa-angle-double-down"></i></a>
-      </div>
-    </div>
-  </section>
-</div>
-
-<section id="dynamic-content-section" class="zz-dynamic-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
-        <div class="zz-wide-card wow fadeInUp" data-wow-delay="0.2s">
-          <div class="wow fadeInUp section-title" data-wow-delay="0.2s">
-              <h2>Contact</h2>
-            </div>
-          <div class="zz-dynamic-content text-content">
-            <?php
-            $filePath = 'contact.txt';
-            if (file_exists($filePath)) {
-                echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-            } else {
-                echo '-';
-            }
-            ?>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="form-section" class="zz-form-section">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 col-sm-12">
-        <div class="zz-form-card wow fadeInUp" data-wow-delay="0.2s">
-          <div class="section-title">
-            <h2>Neem contact op</h2>
-          </div>
-          <form action="#" method="post" id="contact-form">
-            <div class="col-md-6 col-sm-6">
-              <input type="text" class="form-control" name="name" placeholder="Naam">
-            </div>
-            <div class="col-md-6 col-sm-6">
-              <input type="text" class="form-control" name="phone" placeholder="Telefoon">
-            </div>
-            <div class="col-md-12 col-sm-12">
-              <input type="email" class="form-control" name="email" placeholder="E-mail">
-            </div>
-            <div class="col-md-12 col-sm-12">
-              <textarea class="form-control" rows="5" name="message" placeholder="Bericht"></textarea>
-            </div>
-            <div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6">
-              <button id="submit" type="submit" class="form-control" value="submit" name="submit">Verzenden</button>
-            </div>
-          </form>
-          <div class="form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer class="zz-footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-sm-6">
-        <p>Auteursrecht &copy; <?php echo date('Y'); ?> ZZpzo</p>
-      </div>
-      <div class="col-md-6 col-sm-6 zz-footer-links">
-        <a href="terms.php">Algemene voorwaarden</a>
-        <a href="complain.php">Klachtenportaal</a>
-        <a href="privacy.php">Privacybeleid</a>
-      </div>
-    </div>
-  </div>
-</footer>
-<script src="js/jquery.js?id=<?php echo filemtime('js/jquery.js'); ?>"></script>
-<script src="js/bootstrap.min.js?id=<?php echo filemtime('js/bootstrap.min.js'); ?>"></script>
-<script src="js/jquery.parallax.js?id=<?php echo filemtime('js/jquery.parallax.js'); ?>"></script>
-<script src="js/jquery.magnific-popup.min.js?id=<?php echo filemtime('js/jquery.magnific-popup.min.js'); ?>"></script>
-<script src="js/magnific-popup-options.js?id=<?php echo filemtime('js/magnific-popup-options.js'); ?>"></script>
-<script src="js/smoothscroll.js?id=<?php echo filemtime('js/smoothscroll.js'); ?>"></script>
-<script src="js/wow.min.js?id=<?php echo filemtime('js/wow.min.js'); ?>"></script>
-<script src="js/custom.js?id=<?php echo filemtime('js/custom.js'); ?>"></script>
-<script src="js/zz-dynamic.js?id=<?php echo filemtime('js/zz-dynamic.js'); ?>"></script>
-</body>
-</html>
+<body data-spy="scroll" data-target=".navbar-collapse" data-offset="50"><div class="preloader"><div class="spinner"><span class="spinner-rotate"></span></div></div>
+<nav class="zz-navbar"><div class="zz-nav-inner"><a href="index.php" class="navbar-brand" id="brandLogo"><img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();"></a><button type="button" class="zz-menu-toggle" aria-label="Menu"><i class="fa fa-bars"></i></button><div class="zz-main-menu-wrap"><ul class="zz-main-menu"><li><a href="index.php">Startpagina</a></li><li><a href="about.php">Over ons</a></li><li><a href="service.php">Diensten</a></li><li><a class="active" href="contact.php">Contact</a></li></ul></div></div></nav>
+<?php $defaultBanner="images/home-bg.jpg";$bannerFile="contactimage.txt";if(file_exists($bannerFile)){$bannerUrl=trim(file_get_contents($bannerFile));if($bannerUrl===""){$bannerUrl=$defaultBanner;}}else{$bannerUrl=$defaultBanner;} ?>
+<div class="zz-hero-container"><section class="parallax-section zz-hero-section" style="background-image:url('<?php echo htmlspecialchars($bannerUrl); ?>');"><div class="col-md-offset-1 col-md-10 col-sm-12"><div class="home-wrapper"><h1 class="wow fadeInUp" data-wow-delay="0.4s">Contact</h1><a href="#dynamic-content-section" class="wow fadeInUp smoothScroll arrow-btn" data-wow-delay="0.8s"><i class="fa fa-angle-double-down"></i></a></div></div></section></div>
+<section id="dynamic-content-section" class="zz-dynamic-section"><div class="container"><div class="row"><div class="col-md-12 col-sm-12"><div class="zz-wide-card wow fadeInUp" data-wow-delay="0.2s"><div class="wow fadeInUp section-title" data-wow-delay="0.2s"><h2>Contact</h2></div><div class="zz-dynamic-content text-content"><?php $filePath='contact.txt';if(file_exists($filePath)){echo nl2br(htmlspecialchars(file_get_contents($filePath)));}else{echo '-';} ?></div></div></div></div></div></section>
+<section id="form-section" class="zz-form-section"><div class="container"><div class="row"><div class="col-md-12 col-sm-12"><div class="zz-form-card wow fadeInUp" data-wow-delay="0.2s"><div class="section-title"><h2>Neem contact op</h2></div>
+<?php if($formSuccess!==''): ?><div id="form-feedback" class="zz-form-feedback zz-form-feedback-success" role="status" aria-live="polite"><?php echo htmlspecialchars($formSuccess); ?></div><?php endif; ?><?php if($formError!==''): ?><div id="form-feedback" class="zz-form-feedback zz-form-feedback-error" role="alert"><?php echo htmlspecialchars($formError); ?></div><?php endif; ?>
+<form action="" method="post" id="contact-form"><div class="col-md-6 col-sm-6"><input type="text" class="form-control" name="name" placeholder="Naam" value="<?php echo htmlspecialchars($formName,ENT_QUOTES,'UTF-8'); ?>" maxlength="150" autocomplete="name" required></div><div class="col-md-6 col-sm-6"><input type="text" class="form-control" name="phone" placeholder="Telefoon" value="<?php echo htmlspecialchars($formPhone,ENT_QUOTES,'UTF-8'); ?>" maxlength="50" autocomplete="tel"></div><div class="col-md-12 col-sm-12"><input type="email" class="form-control" name="email" placeholder="E-mail" value="<?php echo htmlspecialchars($formEmail,ENT_QUOTES,'UTF-8'); ?>" maxlength="254" autocomplete="email" required></div><div class="col-md-12 col-sm-12"><textarea class="form-control" rows="5" name="message" placeholder="Bericht" maxlength="5000" required><?php echo htmlspecialchars($formMessage); ?></textarea></div><div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6"><button id="submit" type="submit" class="form-control" value="submit" name="submit">Verzenden</button></div></form><div class="form-note">Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php">privacybeleid</a> en de <a href="terms.php">algemene voorwaarden</a> van Google zijn van toepassing.</div>
+</div></div></div></div></section>
+<footer class="zz-footer"><div class="container"><div class="row"><div class="col-md-6 col-sm-6"><p>Auteursrecht &copy; <?php echo date('Y'); ?> ZZpzo</p></div><div class="col-md-6 col-sm-6 zz-footer-links"><a href="terms.php">Algemene voorwaarden</a><a href="complain.php">Klachtenportaal</a><a href="privacy.php">Privacybeleid</a></div></div></div></footer>
+<script src="js/jquery.js?id=<?php echo filemtime('js/jquery.js'); ?>"></script><script src="js/bootstrap.min.js?id=<?php echo filemtime('js/bootstrap.min.js'); ?>"></script><script src="js/jquery.parallax.js?id=<?php echo filemtime('js/jquery.parallax.js'); ?>"></script><script src="js/jquery.magnific-popup.min.js?id=<?php echo filemtime('js/jquery.magnific-popup.min.js'); ?>"></script><script src="js/magnific-popup-options.js?id=<?php echo filemtime('js/magnific-popup-options.js'); ?>"></script><script src="js/smoothscroll.js?id=<?php echo filemtime('js/smoothscroll.js'); ?>"></script><script src="js/wow.min.js?id=<?php echo filemtime('js/wow.min.js'); ?>"></script><script src="js/custom.js?id=<?php echo filemtime('js/custom.js'); ?>"></script><script src="js/zz-dynamic.js?id=<?php echo filemtime('js/zz-dynamic.js'); ?>"></script><script>(function(){window.addEventListener('load',function(){var f=document.getElementById('form-feedback');if(f){setTimeout(function(){f.scrollIntoView({behavior:'smooth',block:'center'});},220);}});})();</script>
+</body></html>
