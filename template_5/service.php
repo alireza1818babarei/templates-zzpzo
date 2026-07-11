@@ -51,33 +51,33 @@ http://www.templatemo.com/tm-492-app-starter
 <!-- Navigation Section -->
 
 <div class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
+ 	<div class="container">
 
-		 <a href="index.php" class="navbar-brand" id="brandLogo">
+ 		 <a href="index.php" class="navbar-brand" id="brandLogo">
     <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo"
          style="width:150px;margin-top:-5px;"
          onerror="this.remove();">
 </a>
         <div class="navbar-header" style="min-height: 70px;">
-			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				<span class="icon icon-bar"></span>
-				<span class="icon icon-bar"></span>
-				<span class="icon icon-bar"></span>
-			</button>
+ 			<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+ 				<span class="icon icon-bar"></span>
+ 				<span class="icon icon-bar"></span>
+ 				<span class="icon icon-bar"></span>
+ 			</button>
 
-		</div>
+ 		</div>
 
-		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="index.php" class="smoothScroll">Startpagina</a></li>
-				<li><a href="about.php" class="smoothScroll">Over ons</a></li>
-				<li><a href="service.php" class="smoothScroll">Diensten</a></li>
+ 		<div class="collapse navbar-collapse">
+ 			<ul class="nav navbar-nav navbar-right">
+ 				<li><a href="index.php" class="smoothScroll">Startpagina</a></li>
+ 				<li><a href="about.php" class="smoothScroll">Over ons</a></li>
+ 				<li><a href="service.php" class="smoothScroll">Diensten</a></li>
 
-        		<li><a href="contact.php">Contact</a></li>
-			</ul>
-		</div>
+         		<li><a href="contact.php">Contact</a></li>
+ 			</ul>
+ 		</div>
 
-	</div>
+ 	</div>
 </div>
 
 
@@ -102,7 +102,7 @@ if (file_exists($bannerFile)) {
 
 
 
-<section id="home" class="main" style="background: #535bd4 url('<?= htmlspecialchars($bannerUrl) ?>') no-repeat;">
+<section id="home" class="main" style="background-image: url('<?= htmlspecialchars($bannerUrl) ?>');">
      <div class="overlay"></div>
   <div class="container">
     <div class="row">
@@ -120,8 +120,8 @@ if (file_exists($bannerFile)) {
 
                </div>
 
-		</div>
-	</div>
+ 		</div>
+ 	</div>
 
 
 
@@ -154,8 +154,8 @@ if (file_exists($bannerFile)) {
 
 
 <footer>
-	<div class="container">
-		<div class="row">
+ 	<div class="container">
+ 		<div class="row">
 
                <div class="col-md-8 col-sm-6">
                     <div class="wow fadeInUp footer-copyright" data-wow-delay="0.4s">
@@ -163,7 +163,7 @@ if (file_exists($bannerFile)) {
                     </div>
                </div>
 
-			<div class="col-md-4 col-sm-12">
+ 			<div class="col-md-4 col-sm-12">
                         <ul class="social-icons">
                             <li><a href="terms.php" style="color: #999;">Algemene voorwaarden</a></li>
                             <li><a href="complain.php" style="color: #999;">Klachtenportaal</a></li>
@@ -171,8 +171,8 @@ if (file_exists($bannerFile)) {
                         </ul>
                     </div>
 
-		</div>
-	</div>
+ 		</div>
+ 	</div>
 </footer>
 
 
@@ -188,8 +188,8 @@ if (file_exists($bannerFile)) {
 
                <form action="#" method="post">
                     <input name="name" type="text" class="form-control" id="name" placeholder="Uw naam" required>
-                 	<input name="email" type="email" class="form-control" id="email" placeholder="E-mailadres" required>
-                 	<textarea name="message" rows="3" class="form-control" id="message" placeholder="Bericht" required></textarea>
+                  	<input name="email" type="email" class="form-control" id="email" placeholder="E-mailadres" required>
+                  	<textarea name="message" rows="3" class="form-control" id="message" placeholder="Bericht" required></textarea>
                     <input name="submit" type="submit" class="form-control" id="submit" value="Bericht verzenden">
                </form>
           </div>
