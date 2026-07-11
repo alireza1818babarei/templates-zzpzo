@@ -1559,7 +1559,7 @@ section:not(.hero) {
 /* Dynamic text section - based on dark story visual */
 .zz-dynamic-section {
   min-height: 100vh;
-  padding: var(--space-2xl) 0;
+  padding: 50px 0;
   display: flex;
   align-items: center;
   background: linear-gradient(104deg,
@@ -1757,7 +1757,7 @@ section:not(.hero) {
   .zz-form-section,
   .zz-plain-section {
     min-height: auto;
-    padding: calc(var(--space-xl) + 50px) 0 var(--space-xl);
+    padding: 50px;
   }
 
   .zz-form-section .contact-grid {

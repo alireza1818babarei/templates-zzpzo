@@ -1,1 +1,1 @@
-images/main-bg.jpg
+flower.jpg

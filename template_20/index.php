@@ -24,7 +24,7 @@
 </head>
 
 <body>
-  
+
   <nav class="pill-nav zz-pill-nav" aria-label="Hoofdnavigatie">
     <a href="index.php" class="navbar-brand" id="brandLogo">
       <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();">
@@ -71,6 +71,9 @@
     <section class="zz-dynamic-section">
       <div class="zz-dynamic-header">
 
+      </div>
+      <div class="zz-dynamic-header">
+        <h2>Startpagina</h2>
       </div>
       <div class="zz-dynamic-panel">
         <div class="zz-dynamic-content text-content zz-home-text-wrap">

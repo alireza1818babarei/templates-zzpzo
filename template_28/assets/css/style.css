@@ -257,7 +257,7 @@ body {
 
 @media(max-width:800px) {
   .site-shell {
-    padding: 14px 14px 96px;
+    padding: 45px 14px 96px;
   }
   
   .site-header {
@@ -358,7 +358,7 @@ This keeps the original page structure and assets while removing the small frame
   box-shadow: none !important;
   background: transparent !important;
   transform: none !important;
-  overflow: hidden !important;
+  overflow: hidden !important;  
 }
 
 .hero-media img {
