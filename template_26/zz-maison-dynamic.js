@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function syncDesktopPanelHeight() {
       if (!textPanel || !formPanel) return;
 
-      if (window.innerWidth > 860) {
+      if (window.innerWidth > 1100) {
         const formHeight = Math.ceil(formPanel.getBoundingClientRect().height);
         textPanel.style.height = formHeight + 'px';
         textPanel.style.maxHeight = formHeight + 'px';
