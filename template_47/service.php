@@ -11,13 +11,13 @@ if (file_exists($filePath)) {
     echo 'Services';
 }
 ?> - Services</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=20260703-fix1">
-  <link rel="stylesheet" href="assets/css/dynamic-template.css?v=20260703-fix1">
+  <link rel="stylesheet" href="assets/css/style.css?id=<?php echo filemtime('assets/css/style.css'); ?>">
+  <link rel="stylesheet" href="assets/css/dynamic-template.css?id=<?php echo filemtime('assets/css/dynamic-template.css'); ?>">
 </head>
 <body><div class="site-shell">
   <header class="site-header">
     <a class="brand" href="index.php" id="brandLogo">
-  <img src="logo.png" alt="Logo" onerror="this.remove();">
+  <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();">
 </a>
     <input class="nav-toggle" id="nav-toggle" type="checkbox">
     <label class="nav-trigger" for="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></label>
@@ -66,6 +66,6 @@ if (file_exists($heroImageFile)) {
   <div><p>Copyright &copy; <?php echo date('Y'); ?> ZZpzo</p></div>
   <div><a href="terms.php">TERMS</a> <a href="complain.php">COMPLAINTS</a> <a href="privacy.php">PRIVACY</a></div>
 </footer>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js?id=<?php echo filemtime('assets/js/main.js'); ?>"></script>
 </body>
 </html>
