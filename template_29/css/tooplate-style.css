@@ -1507,7 +1507,7 @@ body {
 }
 .zz-plain-card {
   width: min(960px, 100%);
-  margin: 0 auto;
+  margin: 100px auto;
   text-align: center;
 }
 .zz-plain-card h1 {

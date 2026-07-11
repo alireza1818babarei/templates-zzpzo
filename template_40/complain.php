@@ -29,7 +29,7 @@ if (file_exists($filePath)) {
     </nav>
   </header>
   <main class="page-main dynamic-fullwidth-main">
-    <section class="content-panel dynamic-content-panel dynamic-form-panel">
+    <section class="content-panel dynamic-content-panel dynamic-form-panel x">
       <h2 class="dynamic-page-title">Klachtenportaal</h2>
       <div class="dynamic-txt-content dynamic-form-text">
     <?php
