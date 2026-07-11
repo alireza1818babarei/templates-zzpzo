@@ -1,0 +1,87 @@
+@media (max-width: 900px) {
+  .contact-layout,
+  .complain-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .contact-copy,
+  .complain-copy {
+    order: 1;
+  }
+
+  .contact-form-panel,
+  .complain-form-panel {
+    order: 2;
+  }
+
+  .contact-copy {
+    padding: 0;
+  }
+
+  .contact-copy .dynamic-content,
+  .contact-copy .text-content,
+  .complain-copy .dynamic-content,
+  .complain-copy .text-content {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .footer {
+    padding: 28px 0;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-inner > p {
+    margin: 0;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+    width: 100%;
+  }
+
+  .footer-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    line-height: 1.35;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-inner {
+    width: min(420px, calc(100% - 32px));
+    gap: 14px;
+  }
+
+  .footer-links {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    width: min(100%, 360px);
+    margin: 0 auto;
+  }
+
+  .footer-links a {
+    min-height: 44px;
+    padding: 8px 10px;
+  }
+}
