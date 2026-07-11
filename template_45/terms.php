@@ -32,6 +32,7 @@ if (file_exists($filePath)) {
 </header>
 <main id="content"><section class="section dynamic-fullwidth-section dynamic-no-hero">
   <div class="site-shell content-card dynamic-content-panel">
+    <h2 class="dynamic-page-title">Algemene voorwaarden</h2>
     <div class="dynamic-txt-content"><?php
     $filePath = 'terms.txt';
     if (file_exists($filePath)) {
