@@ -1,0 +1,40 @@
+/* Mobile order for image pages: image first, dynamic text second. */
+@media (max-width: 992px) {
+  .zz-page-section .zz-content-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+
+  .zz-page-section .zz-content-image-wrap {
+    order: 1;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0 !important;
+    margin-bottom: 32px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .zz-page-section .tm-section-left {
+    order: 2;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .zz-page-section .zz-dynamic-content {
+    width: 100%;
+    height: auto !important;
+    min-height: 0;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 576px) {
+  .zz-page-section .zz-content-image-wrap {
+    margin-bottom: 24px;
+  }
+}
