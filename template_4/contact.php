@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="nl">
 
-  <head>
+<head>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -80,20 +80,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
 
     <title><?php
-        $filePath = 'title.txt';
-        if (file_exists($filePath)) {
-            echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-        } else {
-            echo 'Titel';
-        }
+    $filePath = 'title.txt';
+    if (file_exists($filePath)) {
+        echo nl2br(htmlspecialchars(file_get_contents($filePath)));
+    } else {
+        echo 'Titel';
+    }
     ?></title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" type="text/css"
+        href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>">
 
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.css?id=<?php echo filemtime('css/font-awesome.css'); ?>">
+    <link rel="stylesheet" type="text/css"
+        href="css/font-awesome.css?id=<?php echo filemtime('css/font-awesome.css'); ?>">
 
-    <link rel="stylesheet" type="text/css" href="css/fullpage.min.css?id=<?php echo filemtime('css/fullpage.min.css'); ?>">
+    <link rel="stylesheet" type="text/css"
+        href="css/fullpage.min.css?id=<?php echo filemtime('css/fullpage.min.css'); ?>">
 
-    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css?id=<?php echo filemtime('css/owl.carousel.css'); ?>">
+    <link rel="stylesheet" type="text/css"
+        href="css/owl.carousel.css?id=<?php echo filemtime('css/owl.carousel.css'); ?>">
 
     <link rel="stylesheet" href="css/animate.css?id=<?php echo filemtime('css/animate.css'); ?>">
 
@@ -102,23 +106,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/responsive.css?id=<?php echo filemtime('css/responsive.css'); ?>">
 
     <link rel="stylesheet" href="css/zz-form-feedback.css?id=<?php echo filemtime('css/zz-form-feedback.css'); ?>">
-<style type="text/css">
+    <style type="text/css">
+        @media only screen and (max-width: 767px) {
+            #header {
+                position: fixed;
+                top: 0;
+                z-index: 6666;
+                background-color: #DBE2E8;
+            }
+        }
+    </style>
+</head>
 
-
-    @media only screen and (max-width: 767px) {
-  #header {
-    position: fixed;
-    top: 0;
-    z-index: 6666;
-    background-color: #DBE2E8;
-  }
-}
-
-
-</style>
-    </head>
-
-    <body class="zz-form-page">
+<body class="zz-form-page">
 
     <div id="video">
         <div class="preloader">
@@ -132,17 +132,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <header id="header" style="background: #DBE2E8;">
             <div class="container-fluid">
                 <div class="navbar">
-                          <a href="index.php" class="navbar-brand" id="brandLogo">
-    <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo"
-         style="width:150px;"
-         onerror="this.remove();">
-</a>
+                    <a href="index.php" class="navbar-brand" id="brandLogo">
+                        <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" style="width:150px;"
+                            onerror="this.remove();">
+                    </a>
                     <div class="navigation-row">
                         <nav id="navigation">
                             <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
                             <div class="nav-box navbar-collapse">
                                 <ul class="navigation-menu nav navbar-nav navbars" id="nav">
-                                   <li data-menuanchor="index"><a href="index.php">Startpagina</a></li>
+                                    <li data-menuanchor="index"><a href="index.php">Startpagina</a></li>
                                     <li data-menuanchor="about"><a href="about.php">Over ons</a></li>
                                     <li data-menuanchor="service"><a href="service.php">Diensten</a></li>
                                     <li data-menuanchor="contact"><a href="contact.php">Contact</a></li>
@@ -153,31 +152,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
         </header>
-     <?php
-$defaultBanner = "images/main-bg.jpg";
-$bannerFile = "contactimage.txt";
+        <?php
+        $defaultBanner = "images/main-bg.jpg";
+        $bannerFile = "contactimage.txt";
 
-if (file_exists($bannerFile)) {
-    $bannerUrl = trim(file_get_contents($bannerFile));
-    if ($bannerUrl === "") {
-        $bannerUrl = $defaultBanner;
-    }
+        if (file_exists($bannerFile)) {
+            $bannerUrl = trim(file_get_contents($bannerFile));
+            if ($bannerUrl === "") {
+                $bannerUrl = $defaultBanner;
+            }
 
-    ?>
-    <video autoplay muted loop id="myVideo">
-          <source src="img/banner-bg.jpg" type="video/mp4">
-        </video>
-    <?php
+            ?>
+            <video autoplay muted loop id="myVideo">
+                <source src="img/banner-bg.jpg" type="video/mp4">
+            </video>
+            <?php
 
-} else {
-    $bannerUrl = $defaultBanner;
-    ?>
-    <video autoplay muted loop id="myVideo">
-          <source src="images/video-bg.mp4" type="video/mp4">
-        </video>
-    <?php
-}
-?>
+        } else {
+            $bannerUrl = $defaultBanner;
+            ?>
+            <video autoplay muted loop id="myVideo">
+                <source src="images/video-bg.mp4" type="video/mp4">
+            </video>
+            <?php
+        }
+        ?>
 
 
         <div id="fullpage" class="fullpage-default">
@@ -186,7 +185,8 @@ if (file_exists($bannerFile)) {
                 <div class="section-inner">
                     <div class="welcome-box">
                         <h1 class="welcome-title animate" data-animate="fadeInUp">Contact</h1>
-                        <div class="scroll-down next-section animate" data-animate="fadeInUp"><img src="images/mouse-scroll.png" alt=""><span>Scroll omlaag</span></div>
+                        <div class="scroll-down next-section animate" data-animate="fadeInUp"><img
+                                src="images/mouse-scroll.png" alt=""><span>Scroll omlaag</span></div>
                     </div>
                 </div>
             </div>
@@ -201,104 +201,95 @@ if (file_exists($bannerFile)) {
                                         <div class="about-contentbox">
                                             <div class="animate" data-animate="fadeInUp">
                                                 <div class="zz-dynamic-content">
-                                                  <?php
-        $filePath = 'contact.txt';
-        if (file_exists($filePath)) {
-            echo nl2br(htmlspecialchars(file_get_contents($filePath)));
-        } else {
-            echo '-';
-        }
-    ?>
+                                                    <?php
+                                                    $filePath = 'contact.txt';
+                                                    if (file_exists($filePath)) {
+                                                        echo nl2br(htmlspecialchars(file_get_contents($filePath)));
+                                                    } else {
+                                                        echo '-';
+                                                    }
+                                                    ?>
                                                 </div>
 
-     <div class="container py-5 zz-form-area">
-    <div class="row justify-content-center">
-        <div class="col-lg-10 col-xl-8">
+                                                <div class="container py-5 zz-form-area">
+                                                    <div class="row justify-content-center">
+                                                        <div class="col-lg-10 col-xl-8">
 
-            <p class="text-center mb-4">
-                Neem contact op
-            </p>
+                                                            <p class="text-center mb-4">
+                                                                Neem contact op
+                                                            </p>
 
-            <?php if ($formSuccess !== ''): ?>
-                <div id="form-feedback" class="zz-form-feedback zz-form-feedback-success" role="status" aria-live="polite">
-                    <?php echo htmlspecialchars($formSuccess); ?>
-                </div>
-            <?php endif; ?>
+                                                            <?php if ($formSuccess !== ''): ?>
+                                                                <div id="form-feedback"
+                                                                    class="zz-form-feedback zz-form-feedback-success"
+                                                                    role="status" aria-live="polite">
+                                                                    <?php echo htmlspecialchars($formSuccess); ?>
+                                                                </div>
+                                                            <?php endif; ?>
 
-            <?php if ($formError !== ''): ?>
-                <div id="form-feedback" class="zz-form-feedback zz-form-feedback-error" role="alert">
-                    <?php echo htmlspecialchars($formError); ?>
-                </div>
-            <?php endif; ?>
+                                                            <?php if ($formError !== ''): ?>
+                                                                <div id="form-feedback"
+                                                                    class="zz-form-feedback zz-form-feedback-error"
+                                                                    role="alert">
+                                                                    <?php echo htmlspecialchars($formError); ?>
+                                                                </div>
+                                                            <?php endif; ?>
 
-            <form action="" method="post">
+                                                            <form action="" method="post">
 
-                <div class="row g-3 mb-3">
-                    <div class="col-md-4" style="margin-bottom: 20px;">
-                        <input
-                            type="text"
-                            name="name"
-                            class="form-control"
-                            placeholder="Naam"
-                            value="<?php echo htmlspecialchars($formName, ENT_QUOTES, 'UTF-8'); ?>"
-                            maxlength="150"
-                            autocomplete="name"
-                            required
-                        >
-                    </div>
+                                                                <div class="row g-3 mb-3">
+                                                                    <div class="col-md-4" style="margin-bottom: 20px;">
+                                                                        <input type="text" name="name"
+                                                                            class="form-control" placeholder="Naam"
+                                                                            value="<?php echo htmlspecialchars($formName, ENT_QUOTES, 'UTF-8'); ?>"
+                                                                            maxlength="150" autocomplete="name"
+                                                                            required>
+                                                                    </div>
 
-                    <div class="col-md-4" style="margin-bottom: 20px;">
-                        <input
-                            type="email"
-                            name="email"
-                            class="form-control"
-                            placeholder="E-mail"
-                            value="<?php echo htmlspecialchars($formEmail, ENT_QUOTES, 'UTF-8'); ?>"
-                            maxlength="254"
-                            autocomplete="email"
-                            required
-                        >
-                    </div>
+                                                                    <div class="col-md-4" style="margin-bottom: 20px;">
+                                                                        <input type="email" name="email"
+                                                                            class="form-control" placeholder="E-mail"
+                                                                            value="<?php echo htmlspecialchars($formEmail, ENT_QUOTES, 'UTF-8'); ?>"
+                                                                            maxlength="254" autocomplete="email"
+                                                                            required>
+                                                                    </div>
 
-                    <div class="col-md-4" style="margin-bottom: 20px;">
-                        <input
-                            type="tel"
-                            name="phone"
-                            class="form-control"
-                            placeholder="Telefoon"
-                            value="<?php echo htmlspecialchars($formPhone, ENT_QUOTES, 'UTF-8'); ?>"
-                            maxlength="50"
-                            autocomplete="tel"
-                        >
-                    </div>
-                </div>
+                                                                    <div class="col-md-4" style="margin-bottom: 20px;">
+                                                                        <input type="tel" name="phone"
+                                                                            class="form-control" placeholder="Telefoon"
+                                                                            value="<?php echo htmlspecialchars($formPhone, ENT_QUOTES, 'UTF-8'); ?>"
+                                                                            maxlength="50" autocomplete="tel">
+                                                                    </div>
+                                                                </div>
 
-                <div class="mb-3" style="margin-bottom: 20px;">
-                    <textarea
-                        name="message"
-                        rows="3"
-                        class="form-control"
-                        placeholder="Bericht"
-                        maxlength="5000"
-                        required
-                    ><?php echo htmlspecialchars($formMessage); ?></textarea>
-                </div>
+                                                                <div class="mb-3" style="margin-bottom: 20px;">
+                                                                    <textarea name="message" rows="3"
+                                                                        class="form-control" placeholder="Bericht"
+                                                                        maxlength="5000"
+                                                                        required><?php echo htmlspecialchars($formMessage); ?></textarea>
+                                                                </div>
 
-                <p class="small text-muted mb-4">
-                    Deze site wordt beschermd door reCAPTCHA. Het <a href="privacy.php" class="text-decoration-none">privacybeleid</a> en de <a href="terms.php" class="text-decoration-none">algemene voorwaarden</a> van Google zijn van toepassing.
-                </p>
+                                                                <p class="small text-muted mb-4">
+                                                                    Deze site wordt beschermd door reCAPTCHA. Het <a
+                                                                        href="privacy.php"
+                                                                        class="text-decoration-none">privacybeleid</a>
+                                                                    en de <a href="terms.php"
+                                                                        class="text-decoration-none">algemene
+                                                                        voorwaarden</a> van Google zijn van toepassing.
+                                                                </p>
 
-                <div class="text-end" style="margin-bottom: 20px;">
-                    <button type="submit" class="btn btn-outline-secondary px-4">
-                        Verzenden
-                    </button>
-                </div>
+                                                                <div class="text-end" style="margin-bottom: 20px;">
+                                                                    <button type="submit"
+                                                                        class="btn btn-outline-secondary px-4">
+                                                                        Verzenden
+                                                                    </button>
+                                                                </div>
 
-            </form>
+                                                            </form>
 
-        </div>
-    </div>
-</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
 
                                             </div>
@@ -312,61 +303,59 @@ if (file_exists($bannerFile)) {
                     </div>
                 </div>
                 <style type="text/css">
-.footer-wrapper {
-  display: flex;
-  justify-content: center;
-}
+                    .footer-wrapper {
+                        display: flex;
+                        justify-content: center;
+                    }
 
-.footer-links {
-  margin-top: 200px;
-  width: 100%;
-  max-width: 1100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+                    .footer-links {
+                        margin-top: 200px;
+                        width: 100%;
+                        max-width: 1100px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
 
-.footer-left a {
-  margin-right: 10px;
-}
+                    .footer-left a {
+                        margin-right: 10px;
+                    }
 
-@media (max-width: 767px) {
-  .footer-links {
-    flex-direction: column;
-    gap: 10px;
-    text-align: center;
-  }
+                    @media (max-width: 767px) {
+                        .footer-links {
+                            flex-direction: column;
+                            gap: 10px;
+                            text-align: center;
+                        }
 
-  .footer-left {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-  }
-}
+                        .footer-left {
+                            display: flex;
+                            gap: 10px;
+                            justify-content: center;
+                        }
+                    }
+                </style>
 
+                <div class="footer-wrapper">
+                    <div class="footer-links">
+                        <div class="footer-left">
+                            <a href="terms.php">Algemene voorwaarden</a>
+                            <a href="complain.php">Klachtenportaal</a>
+                            <a href="privacy.php">Privacybeleid</a>
+                        </div>
 
-</style>
-
-<div class="footer-wrapper">
-  <div class="footer-links">
-    <div class="footer-left">
-      <a href="terms.php">Algemene voorwaarden</a>
-      <a href="complain.php">Klachtenportaal</a>
-      <a href="privacy.php">Privacybeleid</a>
-    </div>
-
-    <div class="footer-right" style="text-align: center;">
-      Auteursrecht &copy; <?php echo date('Y'); ?> ZZPZO
-    </div>
-  </div>
-</div>
+                        <div class="footer-right" style="text-align: center;">
+                            Auteursrecht &copy; <?php echo date('Y'); ?> ZZPZO
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
 
 
         </div>
-<!--
+        <!--
         <div id="social-icons">
             <div class="text-right">
                 <ul class="social-icons">
@@ -398,5 +387,6 @@ if (file_exists($bannerFile)) {
     <script src="js/zz-form-feedback.js?id=<?php echo filemtime('js/zz-form-feedback.js'); ?>"></script>
 
 
-  </body>
+</body>
+
 </html>

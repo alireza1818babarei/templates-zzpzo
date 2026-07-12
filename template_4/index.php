@@ -17,13 +17,17 @@
     echo 'Titel';
   }
   ?></title>
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>">
+  <link rel="stylesheet" type="text/css"
+    href="css/bootstrap.min.css?id=<?php echo filemtime('css/bootstrap.min.css'); ?>">
 
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.css?id=<?php echo filemtime('css/font-awesome.css'); ?>">
+  <link rel="stylesheet" type="text/css"
+    href="css/font-awesome.css?id=<?php echo filemtime('css/font-awesome.css'); ?>">
 
-  <link rel="stylesheet" type="text/css" href="css/fullpage.min.css?id=<?php echo filemtime('css/fullpage.min.css'); ?>">
+  <link rel="stylesheet" type="text/css"
+    href="css/fullpage.min.css?id=<?php echo filemtime('css/fullpage.min.css'); ?>">
 
-  <link rel="stylesheet" type="text/css" href="css/owl.carousel.css?id=<?php echo filemtime('css/owl.carousel.css'); ?>">
+  <link rel="stylesheet" type="text/css"
+    href="css/owl.carousel.css?id=<?php echo filemtime('css/owl.carousel.css'); ?>">
 
   <link rel="stylesheet" href="css/animate.css?id=<?php echo filemtime('css/animate.css'); ?>">
 
@@ -57,7 +61,8 @@
       <div class="container-fluid">
         <div class="navbar">
           <a href="index.php" class="navbar-brand" id="brandLogo">
-            <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" style="width:150px;" onerror="this.remove();">
+            <img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" style="width:150px;"
+              onerror="this.remove();">
           </a>
           <div class="navigation-row">
             <nav id="navigation">
