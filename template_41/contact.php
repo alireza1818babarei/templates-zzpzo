@@ -103,7 +103,7 @@ if (file_exists($heroImageFile)) {
     $heroImageUrl = $defaultHeroImage;
 }
 ?>
-  <section class="hero"><div class="hero-copy"><h1>Contact</h1></div><figure class="hero-media"><img src="<?php echo htmlspecialchars($heroImageUrl); ?>" alt="Contact"></figure></section>
+  <section class="hero"><div class="hero-copy"><h1>Contact</h1></div><figure class="hero-media" hidden><img src="<?php echo htmlspecialchars($heroImageUrl); ?>" alt="Contact" onload="this.parentElement.hidden=false;" onerror="var media=this.parentElement;var hero=media.parentElement;media.remove();if(hero){hero.style.gridTemplateColumns='1fr';hero.classList.add('hero-image-missing');}"></figure></section>
   <main class="page-main dynamic-fullwidth-main"><section class="content-panel dynamic-content-panel dynamic-form-panel">
     <div class="dynamic-txt-content dynamic-form-text"><?php
 $filePath = 'contact.txt';
