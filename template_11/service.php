@@ -75,7 +75,7 @@
 						<article id="services">
 							<h2 class="major">Diensten</h2>
 							<span class="image main">
-								<img src="<?= htmlspecialchars($pageImage, ENT_QUOTES, 'UTF-8') ?>" alt="Diensten" />
+								<img src="<?= htmlspecialchars($pageImage, ENT_QUOTES, 'UTF-8') ?>" alt="Diensten" onerror="if(this.parentNode){this.parentNode.remove();}" />
 							</span>
 							<p>
 <?php
