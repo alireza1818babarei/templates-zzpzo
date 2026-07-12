@@ -1,19 +1,53 @@
-/* Keep the responsive header in the document flow so it does not cover the hero image. */
-@media (max-width: 1100px) {
-  .site-header {
-    position: sticky !important;
-    top: 0;
-    left: auto;
-    right: auto;
-    width: 100%;
+/* Keep the header sticky in the document flow so it never overlaps the hero. */
+:root {
+  --zz-header-height: 112px;
+}
+
+.site-header,
+.site-header.scrolled {
+  position: sticky !important;
+  top: 0;
+  left: auto;
+  right: auto;
+  width: 100%;
+  height: var(--zz-header-height);
+  min-height: var(--zz-header-height);
+  padding: var(--space-md) 0 !important;
+  z-index: 1000;
+}
+
+.site-header .container {
+  width: 100%;
+}
+
+/* Header + hero together occupy exactly one viewport. */
+.zz-hero {
+  min-height: calc(100vh - var(--zz-header-height)) !important;
+  height: calc(100vh - var(--zz-header-height)) !important;
+  max-height: none !important;
+}
+
+@supports (height: 100dvh) {
+  .zz-hero {
+    min-height: calc(100dvh - var(--zz-header-height)) !important;
+    height: calc(100dvh - var(--zz-header-height)) !important;
   }
 }
 
-/* Hide the separate hero title panel on mobile while keeping the hero image visible. */
+/* Hide the separate hero title panel on mobile while the image fills the remaining viewport. */
 @media (max-width: 860px) {
+  :root {
+    --zz-header-height: 88px;
+  }
+
+  .site-header,
+  .site-header.scrolled {
+    padding: var(--space-sm) 0 !important;
+  }
+
   .zz-hero {
-    min-height: 0 !important;
-    height: auto !important;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr !important;
   }
 
   .zz-hero .hero-content {
@@ -21,13 +55,9 @@
   }
 
   .zz-hero .hero-image {
-    height: 48vh;
-    min-height: 340px;
-  }
-}
-
-@media (max-width: 576px) {
-  .zz-hero .hero-image {
-    min-height: 300px;
+    width: 100%;
+    height: 100% !important;
+    min-height: 0 !important;
+    clip-path: none;
   }
 }
