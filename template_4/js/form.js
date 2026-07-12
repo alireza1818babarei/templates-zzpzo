@@ -47,3 +47,49 @@ $(function() {
 	});
 
 });
+
+(function() {
+	var pageName = window.location.pathname.split('/').pop().toLowerCase();
+	var imageFiles = {
+		'': 'homeimage.txt',
+		'index.php': 'homeimage.txt',
+		'about.php': 'aboutimage.txt',
+		'service.php': 'serviceimage.txt',
+		'contact.php': 'contactimage.txt'
+	};
+	var imageFile = imageFiles[pageName];
+	var backgroundContainer = document.getElementById('video');
+	var oldVideo = document.getElementById('myVideo');
+	var defaultImage = 'images/main-bg.jpg';
+
+	if (!imageFile || !backgroundContainer) {
+		return;
+	}
+
+	function applyBackground(imageUrl) {
+		backgroundContainer.style.backgroundImage = 'url(' + JSON.stringify(imageUrl) + ')';
+		backgroundContainer.style.backgroundSize = 'cover';
+		backgroundContainer.style.backgroundPosition = 'center';
+		backgroundContainer.style.backgroundRepeat = 'no-repeat';
+		backgroundContainer.style.backgroundAttachment = 'fixed';
+	}
+
+	applyBackground(defaultImage);
+
+	if (oldVideo && oldVideo.parentNode) {
+		oldVideo.parentNode.removeChild(oldVideo);
+	}
+
+	$.ajax({
+		url: imageFile,
+		dataType: 'text',
+		cache: false
+	})
+	.done(function(imagePath) {
+		imagePath = $.trim(imagePath);
+		applyBackground(imagePath !== '' ? imagePath : defaultImage);
+	})
+	.fail(function() {
+		applyBackground(defaultImage);
+	});
+})();
