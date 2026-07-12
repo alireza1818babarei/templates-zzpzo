@@ -79,7 +79,7 @@
       <article id="about">
         <h2 class="major">Over ons</h2>
         <span class="image main">
-          <img src="<?= htmlspecialchars($pageImage, ENT_QUOTES, 'UTF-8') ?>" alt="Over ons" />
+          <img src="<?= htmlspecialchars($pageImage, ENT_QUOTES, 'UTF-8') ?>" alt="Over ons" onerror="if(this.parentNode){this.parentNode.remove();}" />
         </span>
         <p>
           <?php
