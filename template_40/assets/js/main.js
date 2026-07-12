@@ -6,30 +6,46 @@ document.addEventListener('click', function (event) {
 });
 
 (function () {
-  function hideBrokenHeroImage(image) {
+  function removeBrokenHeroImage(image) {
+    if (!image || image.dataset.zzHeroHandled === '1') {
+      return;
+    }
+
+    image.dataset.zzHeroHandled = '1';
+
     var media = image.closest('.hero-media');
     var hero = image.closest('.hero');
 
     if (media) {
-      media.style.display = 'none';
+      media.remove();
     }
 
     if (hero) {
-      hero.style.gridTemplateColumns = '1fr';
       hero.classList.add('hero-image-missing');
+      hero.style.gridTemplateColumns = '1fr';
     }
   }
+
+  window.zzRemoveBrokenHeroImage = removeBrokenHeroImage;
+
+  document.addEventListener('error', function (event) {
+    var image = event.target;
+
+    if (image && image.matches && image.matches('.hero-media img')) {
+      removeBrokenHeroImage(image);
+    }
+  }, true);
 
   function watchHeroImages() {
     var images = document.querySelectorAll('.hero-media img');
 
     images.forEach(function (image) {
       image.addEventListener('error', function () {
-        hideBrokenHeroImage(image);
+        removeBrokenHeroImage(image);
       }, { once: true });
 
       if (image.complete && image.naturalWidth === 0) {
-        hideBrokenHeroImage(image);
+        removeBrokenHeroImage(image);
       }
     });
   }
