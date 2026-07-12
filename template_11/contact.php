@@ -108,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			<div id="main">
 				<article id="contact">
 					<h2 class="major">Neem contact op</h2>
-					<span class="image main"><img src="<?= htmlspecialchars($pageImage, ENT_QUOTES, 'UTF-8') ?>" alt="Neem contact op" /></span>
+					<span class="image main"><img src="<?= htmlspecialchars($pageImage, ENT_QUOTES, 'UTF-8') ?>" alt="Neem contact op" onerror="if(this.parentNode){this.parentNode.remove();}" /></span>
 					<p class="zz-dynamic-content"><?php
 					$contentFile = 'contact.txt';
 					if (file_exists($contentFile)) {
