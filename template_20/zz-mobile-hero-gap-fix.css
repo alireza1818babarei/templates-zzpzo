@@ -1,4 +1,4 @@
-/* Hide the separate page-title panel below the hero image on mobile. */
+/* Keep the mobile hero compact and place the page title close to the image. */
 @media (max-width: 768px) {
   .zz-hero-section {
     min-height: auto !important;
@@ -8,5 +8,15 @@
 
   .zz-hero-content {
     display: none !important;
+  }
+
+  .zz-hero-section + .zz-dynamic-section {
+    min-height: auto !important;
+    justify-content: flex-start !important;
+    padding-top: 36px !important;
+  }
+
+  .zz-hero-section + .zz-dynamic-section .zz-dynamic-header {
+    margin-bottom: 24px;
   }
 }
