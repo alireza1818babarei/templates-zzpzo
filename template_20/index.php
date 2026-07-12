@@ -70,9 +70,6 @@
 
     <section class="zz-dynamic-section">
       <div class="zz-dynamic-header">
-
-      </div>
-      <div class="zz-dynamic-header">
         <h2>Startpagina</h2>
       </div>
       <div class="zz-dynamic-panel">
