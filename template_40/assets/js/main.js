@@ -21,8 +21,17 @@ document.addEventListener('click', function (event) {
     }
 
     if (hero) {
+      var copy = hero.querySelector('.hero-copy');
+
       hero.classList.add('hero-image-missing');
       hero.style.gridTemplateColumns = '1fr';
+      hero.style.justifyItems = 'center';
+      hero.style.textAlign = 'center';
+
+      if (copy) {
+        copy.style.width = '100%';
+        copy.style.textAlign = 'center';
+      }
     }
   }
 
