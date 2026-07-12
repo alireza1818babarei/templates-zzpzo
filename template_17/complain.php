@@ -192,8 +192,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <script src="js/jquery-3.2.1.slim.min.js?id=<?php echo filemtime('js/jquery-3.2.1.slim.min.js'); ?>"></script>
   <script src="js/zz-dynamic.js?id=<?php echo filemtime('js/zz-dynamic.js'); ?>"></script>
 </body>
-<<<<<<< HEAD
-
-=======
->>>>>>> 2849b00648a7e67c9ffbc11358c845e470ac863b
 </html>
