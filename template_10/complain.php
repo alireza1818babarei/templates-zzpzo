@@ -106,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		<title><?= htmlspecialchars($siteTitle, ENT_QUOTES, 'UTF-8') ?> - Klachtenportaal</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css?id=<?= $version ?>" />
+		<link rel="stylesheet" href="assets/css/mobile-menu-fix.css?id=<?php echo filemtime('assets/css/mobile-menu-fix.css'); ?>" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css?id=<?= $version ?>" /></noscript>
 		<style>
 			.zz-form-feedback{margin:0 0 2rem;padding:1rem 1.15rem;border:1px solid transparent;line-height:1.5;text-align:left;overflow-wrap:anywhere;scroll-margin-top:7rem}
