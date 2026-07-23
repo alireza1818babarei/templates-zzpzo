@@ -11,10 +11,17 @@ if (file_exists($filePath)) {
     echo 'Terms';
 }
 ?> - Terms</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css?id=<?php echo filemtime('assets/css/style.css'); ?>">
 </head>
-<body >
-  <header class="site-header"><a class="brand" href="index.php" id="brandLogo"><img src="logo.png" alt="Logo" onerror="this.remove();"></a><nav class="nav"><a href="index.php"><span>Home</span></a><a href="about.php"><span>About Us</span></a><a href="service.php"><span>Services</span></a><a href="contact.php"><span>Contact</span></a></nav></header>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.php" id="brandLogo"><img src="logo.png" alt="Logo" onerror="this.remove();"></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <nav class="nav" id="primaryNav"><a href="index.php"><span>Home</span></a><a href="about.php"><span>About Us</span></a><a href="service.php"><span>Services</span></a><a href="contact.php"><span>Contact</span></a></nav>
+  </header>
   <main>
   <section class="simple-page" id="content">
       <div class="simple-card dynamic-content">
@@ -37,6 +44,6 @@ if (file_exists($filePath)) {
     </div>
     <p class="mb-0">Copyright &copy; <?php echo date('Y'); ?> ZZpzo</p>
   </footer>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?id=<?php echo filemtime('assets/js/main.js'); ?>"></script>
 </body>
 </html>
