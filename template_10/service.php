@@ -36,6 +36,7 @@
 		<title><?= htmlspecialchars($siteTitle, ENT_QUOTES, 'UTF-8') ?> - Diensten</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css?id=<?= $version ?>" />
+		<link rel="stylesheet" href="assets/css/mobile-menu-fix.css?id=<?php echo filemtime('assets/css/mobile-menu-fix.css'); ?>" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css?id=<?= $version ?>" /></noscript>
 	</head>
 	<body class="is-preload">
