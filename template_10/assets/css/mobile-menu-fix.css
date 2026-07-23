@@ -1,0 +1,42 @@
+/* Keep the menu icon visible on screens narrower than 480px. */
+@media screen and (max-width: 480px) {
+  #header nav {
+    flex: 0 0 4rem;
+    min-width: 4rem;
+  }
+
+  #header nav a[href="#menu"] {
+    display: block !important;
+    position: relative !important;
+    width: 4rem !important;
+    min-width: 4rem !important;
+    height: 2.75em !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    text-indent: -9999px !important;
+  }
+
+  #header nav a[href="#menu"]::before {
+    content: "" !important;
+    display: block !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-image:
+      linear-gradient(#ffffff, #ffffff),
+      linear-gradient(#ffffff, #ffffff),
+      linear-gradient(#ffffff, #ffffff) !important;
+    background-size: 24px 2px, 24px 2px, 24px 2px !important;
+    background-position:
+      center calc(50% - 7px),
+      center,
+      center calc(50% + 7px) !important;
+    background-repeat: no-repeat !important;
+    opacity: 1 !important;
+  }
+
+  #header nav a[href="#menu"]::after {
+    display: none !important;
+  }
+}
