@@ -31,3 +31,15 @@ html,body{max-width:100%;overflow-x:hidden;}
   .site-footer > div:last-child{display:grid;grid-template-columns:1fr;gap:10px;width:min(100%,360px);margin:16px auto 0;}
   .site-footer > div:last-child a{display:block;margin:0;padding:8px 10px;line-height:1.4;text-align:center;overflow-wrap:anywhere;}
 }
+
+/* Keep all desktop menu items on one straight baseline. */
+.main-nav{
+  align-items:center;
+  transform:none !important;
+}
+.main-nav a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transform:none !important;
+}
