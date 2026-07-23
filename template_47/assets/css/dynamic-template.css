@@ -24,3 +24,15 @@ html,body{max-width:100%;overflow-x:hidden;}
 .dynamic-txt-content *,.dynamic-form-panel *{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:break-word;}
 .dynamic-txt-content img,.dynamic-txt-content video,.dynamic-txt-content iframe{max-width:100%;height:auto;}
 .dynamic-txt-content table,.dynamic-txt-content pre{display:block;max-width:100%;overflow-x:auto;white-space:pre-wrap;}
+
+/* Remove the decorative rotations so the complete menu stays level. */
+.main-nav{
+  align-items:center;
+  transform:none !important;
+}
+.main-nav a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transform:none !important;
+}
