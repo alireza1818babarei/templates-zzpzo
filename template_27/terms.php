@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html>
-
+<?php
+$defaultBanner = 'images/header.jpg';
+?>
 <head>
 	<title><?php
 	$filePath = 'title.txt';
@@ -18,7 +20,7 @@
 <body class="is-preload no-hero-page">
 
 	<div id="header" class="template-hero"
-		style="background-image: url('assets/css/images/top-3200.svg'), url('<?= htmlspecialchars($bannerUrl) ?>');">
+		style="background-image: url('assets/css/images/top-3200.svg'), url('<?= htmlspecialchars($defaultBanner) ?>');">
 		<a href="index.php" class="logo navbar-brand" id="brandLogo">
 			<img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();">
 		</a>

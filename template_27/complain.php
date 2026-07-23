@@ -45,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $defaultBanner = 'images/header.jpg';
 
 ?>
-?>
 <!DOCTYPE HTML>
 <html>
 
