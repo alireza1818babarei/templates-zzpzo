@@ -52,6 +52,22 @@
       text-transform: uppercase;
     }
 
+    .zz-home-dynamic-box {
+      width: min(40rem, 100%);
+      max-width: 100%;
+      margin: 2rem 0;
+      padding: 1.25rem 1.5rem;
+      border: solid 1px rgba(255, 255, 255, 0.85);
+      border-radius: 4px;
+      background: rgba(27, 31, 34, 0.35);
+      line-height: 1.75;
+      text-align: left;
+      box-sizing: border-box;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      overflow-x: hidden;
+    }
+
     @media screen and (max-width: 736px) {
       .zz-home-page #footer .copyright .zz-legal-link {
         display: block;
@@ -61,6 +77,12 @@
 
       .zz-home-page #footer .copyright .zz-link-separator {
         display: none;
+      }
+
+      .zz-home-dynamic-box {
+        width: 100%;
+        margin: 1.5rem 0;
+        padding: 1rem;
       }
     }
   </style>
@@ -93,6 +115,17 @@
         </ul>
       </nav>
     </header>
+
+    <section class="zz-home-dynamic-box" aria-label="Startpagina inhoud">
+      <?php
+      $filePath = 'home.txt';
+      if (file_exists($filePath)) {
+          echo nl2br(htmlspecialchars(file_get_contents($filePath)));
+      } else {
+          echo '-';
+      }
+      ?>
+    </section>
 
     <div id="main">
 
