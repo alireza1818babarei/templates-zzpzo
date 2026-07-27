@@ -29,7 +29,7 @@ if (file_exists($bannerFile)) {
 	</head>
 	<body class="is-preload">
 
-		<div id="header" class="template-hero" style="background-image: url('assets/css/images/top-3200.svg'), url('<?= htmlspecialchars($bannerUrl) ?>');">
+		<div id="header" class="template-hero" style="background-image: url('assets/css/images/top-3200.svg'), linear-gradient(to bottom, var(--zz-hero-overlay-top) 0%, var(--zz-hero-overlay-middle) 50%, var(--zz-hero-overlay-bottom) 100%), url('<?= htmlspecialchars($bannerUrl) ?>');">
 			<a href="index.php" class="logo navbar-brand" id="brandLogo">
 				<img src="logo.png?id=<?php echo filemtime('logo.png'); ?>" alt="Logo" onerror="this.remove();">
 			</a>
