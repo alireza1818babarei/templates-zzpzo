@@ -67,6 +67,7 @@ if (file_exists($bannerFile)) {
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="assets/css/main.css?id=<?php echo filemtime('assets/css/main.css'); ?>" />
+	<link rel="stylesheet" href="assets/css/hero-contrast-fix.css?id=<?php echo filemtime('assets/css/hero-contrast-fix.css'); ?>" />
 	<style>
 		.zz-form-feedback {
 			margin: 0 0 1.5rem;
