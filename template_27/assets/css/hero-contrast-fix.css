@@ -1,10 +1,15 @@
-/* Keep hero content readable over light or white dynamic header images. */
+/* Keep hero content readable without darkening the decorative bottom triangle. */
+:root {
+  --zz-hero-overlay-top: rgba(7, 11, 15, 0.34);
+  --zz-hero-overlay-middle: rgba(7, 11, 15, 0.52);
+  --zz-hero-overlay-bottom: rgba(7, 11, 15, 0.64);
+}
+
 #header.template-hero {
-  background-color: #4b535a;
-  background-blend-mode: normal, multiply;
-  box-shadow:
-    inset 0 10rem 12rem -10rem rgba(0, 0, 0, 0.42),
-    inset 0 -18rem 16rem -12rem rgba(0, 0, 0, 0.58);
+  background-attachment: scroll, scroll, scroll;
+  background-position: bottom center, center center, center center;
+  background-repeat: repeat-x, no-repeat, no-repeat;
+  background-size: 3200px 460px, cover, cover;
   text-shadow: 0 3px 18px rgba(0, 0, 0, 0.8);
 }
 
@@ -48,7 +53,7 @@
 
 @media screen and (max-width: 736px) {
   #header.template-hero {
-    background-color: #41484f;
+    background-size: 1280px 184px, cover, cover;
     text-shadow: 0 3px 14px rgba(0, 0, 0, 0.9);
   }
 
